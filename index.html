@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>print(Null) — Página oficial</title>
+  <meta name="description" content="Landing page moderna para la compañía print(Null). Diseño oscuro con acentos cian." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0a0a0b;          /* Fondo principal */
+      --panel:#111214;       /* Tarjetas/nav */
+      --panel-2:#0f1012;     /* Variación */
+      --text:#e8e9ea;        /* Texto principal */
+      --muted:#9aa3ad;       /* Texto secundario */
+      --accent:#16c1d9;      /* Cian inspirado en el logo */
+      --accent-2:#58e6ff;    /* Cian claro para brillos */
+      --ring: 0 0 0 2px var(--accent) inset, 0 0 24px 2px color-mix(in oklab, var(--accent) 60%, transparent);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.02);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 70% -10%, rgba(22,193,217,.08), transparent 60%),
+                  radial-gradient(800px 600px at 0% 100%, rgba(88,230,255,.06), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      letter-spacing:.1px;
+    }
+    a{color:var(--text); text-decoration:none}
+    .container{width:100%; max-width:1160px; margin-inline:auto; padding-inline:24px}
+
+    /* Nav */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px)}
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,.04);
+      background:linear-gradient(180deg, rgba(17,18,20,.85), rgba(17,18,20,.65));
+    }
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700}
+    .brand img{height:36px; width:auto; display:block; filter:drop-shadow(0 4px 18px rgba(22,193,217,.25))}
+    .brand .name{font-weight:800; letter-spacing:.4px}
+    .brand .accent{color:var(--accent)}
+    nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
+    nav a{padding:10px 12px; border-radius:12px; color:var(--muted)}
+    nav a:hover{color:var(--text); background:#0d0f12}
+
+    .cta{display:flex; align-items:center; gap:12px}
+    .btn{padding:10px 16px; border-radius:14px; border:1px solid rgba(255,255,255,.07); background:linear-gradient(180deg,#17191d,#121418); box-shadow:var(--shadow); color:var(--text); font-weight:600}
+    .btn:hover{box-shadow:0 0 0 2px rgba(255,255,255,.04) inset, 0 14px 40px rgba(0,0,0,.5)}
+    .btn.primary{border: none; background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 75%, #0b1114), #0d1316); color:#041316}
+    .btn.primary:hover{box-shadow: var(--ring)}
+
+    /* Hero */
+    .hero{position:relative; overflow:hidden}
+    .hero .inner{display:grid; grid-template-columns: 1.2fr .8fr; gap:40px; align-items:center; padding:60px 0 40px}
+    .badge{display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px; border:1px solid rgba(22,193,217,.25); color:var(--accent-2); background:rgba(22,193,217,.06)}
+    .display{font-size:56px; line-height:1.05; margin:16px 0; letter-spacing:.2px}
+    .lead{color:var(--muted); font-size:18px; max-width:58ch}
+    .hero-cta{display:flex; gap:12px; margin-top:26px}
+
+    .logo-card{position:relative; border-radius:24px; background:radial-gradient(60% 60% at 50% 0%, rgba(22,193,217,.18), transparent 60%), var(--panel); padding:32px; box-shadow:var(--shadow);}
+    .logo-card .glow{position:absolute; inset:-40px; background:radial-gradient(50% 50% at 50% 50%, rgba(22,193,217,.18), transparent 70%); filter:blur(40px); opacity:.9; pointer-events:none}
+    .logo-wrap{display:grid; place-items:center; padding:22px; border-radius:20px; background:linear-gradient(180deg, #0e1013, #0b0d10); border:1px solid rgba(255,255,255,.06)}
+    .logo{max-width:340px; width:100%; height:auto}
+    .caption{color:var(--muted); text-align:center; margin-top:12px; font-size:14px}
+
+    /* Sections */
+    section{padding:72px 0}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+    .card{background:linear-gradient(180deg, var(--panel), var(--panel-2)); border:1px solid rgba(255,255,255,.07); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow)}
+    .card h3{margin:4px 0 6px}
+    .eyebrow{color:var(--accent-2); font-weight:700; letter-spacing:.25px; text-transform:uppercase; font-size:12px}
+    .muted{color:var(--muted)}
+
+    /* Showcase strip */
+    .strip{display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:center}
+    .strip .img{border-radius:var(--radius); background: radial-gradient(60% 60% at 50% 0%, rgba(22,193,217,.12), transparent 60%), #0d0f12; border:1px solid rgba(255,255,255,.06); height:320px; display:grid; place-items:center; color:var(--muted)}
+
+    /* Contact */
+    form{display:grid; gap:14px; max-width:520px}
+    input, textarea{background:#0f1216; color:var(--text); border-radius:14px; border:1px solid rgba(255,255,255,.07); padding:12px 14px; outline:none}
+    input:focus, textarea:focus{box-shadow: var(--ring)}
+    textarea{min-height:120px; resize:vertical}
+
+/* Team cards */
+.team-card{padding:0; overflow:hidden; text-align:center}
+.team-photo{width:100%; height:300px; overflow:hidden; border-radius:var(--radius) var(--radius) 0 0; background:#0d0f12; border-bottom:1px solid rgba(255,255,255,.06)}
+.team-photo img{width:100%; height:100%; object-fit:cover; display:block}
+.team-meta{padding:14px 16px}
+@media (max-width:960px){ .team-photo{height:240px} }
+
+    /* Footer */
+    footer{border-top:1px solid rgba(255,255,255,.06); background:#0b0c0f; padding:32px 0; color:var(--muted)}
+    .foot{display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between}
+    .foot small{opacity:.9}
+
+    /* Responsive */
+    .menu-btn{display:none}
+    @media (max-width: 960px){
+      .hero .inner{grid-template-columns:1fr; padding-top:36px}
+      .display{font-size:42px}
+      .grid-3{grid-template-columns:1fr}
+      .strip{grid-template-columns:1fr}
+      nav ul{display:none}
+      .menu-btn{display:inline-flex}
+      .drawer{position:fixed; inset:64px 16px auto; background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:14px; box-shadow:var(--shadow); display:none}
+      .drawer.open{display:block}
+      .drawer a{display:block; padding:10px 12px; border-radius:10px; color:var(--muted)}
+      .drawer a:hover{background:#0d0f12; color:var(--text)}
+    }
+      /* Modal + Tabs */
+    .modal{position:fixed; inset:0; background:rgba(0,0,0,.62); display:none; align-items:center; justify-content:center; padding:20px}
+    .modal.open{display:flex}
+    .modal-content{width:min(960px,100%); background:linear-gradient(180deg, var(--panel), var(--panel-2)); border:1px solid rgba(255,255,255,.08); border-radius:20px; box-shadow:var(--shadow); padding:18px}
+    .modal-head{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:6px 6px 14px; border-bottom:1px solid rgba(255,255,255,.06)}
+    .tabs{display:flex; gap:8px; flex-wrap:wrap; padding:14px 6px 0}
+    .tab-btn{background:#0f1216; border:1px solid rgba(255,255,255,.08); color:var(--muted); padding:8px 12px; border-radius:12px; cursor:pointer}
+    .tab-btn.active{color:#041316; background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 75%, #0b1114), #0d1316); border:none; box-shadow:var(--ring)}
+    .tab-panel{display:none; padding:14px 6px 6px}
+    .tab-panel.open{display:block}
+    .doc-list{list-style:none; padding:0; margin:8px 0 0}
+    .doc-list li{display:flex; align-items:center; gap:8px; padding:10px 12px; border:1px solid rgba(255,255,255,.06); border-radius:12px; background:#0e1013; margin-bottom:10px}
+    .doc-list a{color:var(--accent-2); font-weight:600}
+  </style>
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand" aria-label="Inicio print(Null)">
+        <!-- Reemplaza src por la ruta de tu logo -->
+        <img src="/logo.jpg" alt="Logo print(Null)" />
+        <span class="name">print<span class="accent">(Null)</span></span>
+      </a>
+      <nav aria-label="Principal">
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#showcase">Proyectos</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="cta">
+        <a class="btn" href="#contacto">Hablemos</a>
+        <button class="btn primary menu-btn" id="menuBtn" aria-controls="drawer" aria-expanded="false">Menú</button>
+      </div>
+    </div>
+    <div id="drawer" class="drawer container" aria-hidden="true">
+      <a href="#servicios" onclick="closeDrawer()">Servicios</a>
+      <a href="#showcase" onclick="closeDrawer()">Proyectos</a>
+      <a href="#nosotros" onclick="closeDrawer()">Nosotros</a>
+      <a href="#contacto" onclick="closeDrawer()">Contacto</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container inner">
+        <div>
+          <span class="badge">Nuevo • Agencia de software</span>
+          <h1 class="display">Soluciones elegantes en <span style="color:var(--accent-2)">tonos negros</span> y alto contraste</h1>
+          <p class="lead">En <strong>print(Null)</strong> diseñamos y construimos productos digitales con desempeño, accesibilidad y un estilo visual oscuro inspirado en nuestro logo. Aplicaciones web, sitios corporativos y APIs a la medida.</p>
+          <div class="hero-cta">
+            <a class="btn primary" href="#contacto">Solicitar propuesta</a>
+            <a class="btn" href="#servicios">Ver servicios</a>
+          </div>
+        </div>
+        <div class="logo-card">
+          <div class="glow" aria-hidden="true"></div>
+          <div class="logo-wrap">
+            <!-- Reemplaza por tu imagen. Mantén el alt para accesibilidad. -->
+            <img class="logo" src="/logo.jpg" alt="Logo de la compañía print(Null)" />
+          </div>
+          <p class="caption">Identidad minimalista: tipografía limpia, acento cian, fondo negro profundo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios">
+      <div class="container">
+        <h2 style="margin:0 0 10px">Servicios</h2>
+        <p class="muted" style="margin:0 0 22px">Todo lo necesario para lanzar y escalar tu producto digital.</p>
+        <div class="grid-3">
+          <article class="card">
+            <span class="eyebrow">Desarrollo</span>
+            <h3>Web & APIs</h3>
+            <p class="muted">Front‑end moderno (React/Next.js) y back‑end robusto (Node/Django) con pruebas, CI/CD y seguridad desde el diseño.</p>
+          </article>
+          <article class="card">
+            <span class="eyebrow">Experiencia</span>
+            <h3>UX/UI en modo oscuro</h3>
+            <p class="muted">Interfaces accesibles con contraste AA/AAA, micro‑interacciones y rendimiento óptimo en cualquier dispositivo.</p>
+          </article>
+          <article class="card">
+            <span class="eyebrow">Branding</span>
+            <h3>Identidad visual</h3>
+            <p class="muted">Guías de estilo, paletas, componentes y patrones coherentes con el ADN <em>print(Null)</em>.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Showcase -->
+    <section id="showcase">
+      <div class="container">
+        <h2 style="margin-bottom:10px">Proyecto</h2>
+        <p class="muted" style="margin:0 0 22px">Un solo proyecto destacado. Haz clic para ver su documentación organizada por secciones.</p>
+        <div class="card" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">
+          <div>
+            <span class="eyebrow">Producto</span>
+            <h3 style="margin:6px 0 4px">DashKPI – Dashboard de KPIs</h3>
+            <p class="muted" style="max-width:60ch">Panel de control para monitorear métricas clave del negocio en tiempo real: rendimiento, disponibilidad y tendencias. Incluye histórico, alertas y exportación.</p>
+          </div>
+          <div style="display:flex;gap:10px">
+            <button class="btn" onclick="openProjectModal()">Ver documentos</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal Proyecto: DashKPI -->
+    <div id="projectModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="projectTitle">
+      <div class="modal-content" role="document">
+        <div class="modal-head">
+          <h3 id="projectTitle" class="name">DashKPI <span class="accent">— Documentos</span></h3>
+          <button class="btn" onclick="closeProjectModal()" aria-label="Cerrar">Cerrar</button>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs" role="tablist" aria-label="Secciones del proyecto">
+          <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-bitacora" id="btn-bitacora" onclick="switchTab('bitacora')">Bitácora</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-cripst" id="btn-cripst" onclick="switchTab('sripst')">Cripst</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-acta" id="btn-acta" onclick="switchTab('acta')">Acta de iniciación</button>
+        </div>
+
+        <!-- Tab panels -->
+        <div id="tab-bitacora" class="tab-panel open" role="tabpanel" aria-labelledby="btn-bitacora">
+          <ul class="doc-list">
+            <!-- Reemplaza los # por rutas reales a tus documentos (PDF, DOCX, Google Docs, etc.) -->
+            <li><a href="#" target="_blank" rel="noopener">Bitácora - Semana 1</a><span class="muted"> • objetivos, avances y pendientes</span></li>
+            <li><a href="#" target="_blank" rel="noopener">Bitácora - Semana 2</a><span class="muted"> • pruebas de prototipo y feedback</span></li>
+            <li><a href="#" target="_blank" rel="noopener">Bitácora - Semana 3</a><span class="muted"> • integración con API</span></li>
+          </ul>
+        </div>
+
+        <div id="tab-cripst" class="tab-panel" role="tabpanel" aria-labelledby="btn-cripst">
+          <ul class="doc-list">
+            <li><a href="#" target="_blank" rel="noopener">SRIPST - Contexto y alcance</a></li>
+            <li><a href="#" target="_blank" rel="noopener">SRIPST - Requisitos funcionales y no funcionales</a></li>
+            <li><a href="#" target="_blank" rel="noopener">SRIPST - Plan de pruebas</a></li>
+          </ul>
+        </div>
+
+        <div id="tab-acta" class="tab-panel" role="tabpanel" aria-labelledby="btn-acta">
+          <ul class="doc-list">
+            <li><a href="#" target="_blank" rel="noopener">Acta de iniciación - Versión 1.0</a></li>
+            <li><a href="#" target="_blank" rel="noopener">Matriz de interesados</a></li>
+            <li><a href="#" target="_blank" rel="noopener">Cronograma inicial</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+<!-- Nosotros -->
+<section id="nosotros">
+  <div class="container">
+    <h2>Nosotros</h2>
+    <p class="muted">Somos un equipo full‑stack con enfoque en performance, seguridad y un acabado visual pulido. Trabajamos con metodologías ágiles y entregas iterativas.</p>
+
+    <div class="grid-3">
+<div class="card team-card" style="text-align:center">
+  <div style="
+    background:#0d0f12; 
+    padding:8px; 
+    border-radius:var(--radius); 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    height:300px;">
+    <img src="leidy.jpg" alt="Foto de leidy" 
+         style="max-width:80%; max-height:100%; object-fit:contain; border-radius:calc(var(--radius) - 4px)">
+  </div>
+  <div class="team-meta" style="padding:12px">
+          <h3>Leidy Giraldo</h3>
+          <p class="muted">Líder de equipo</p>
+        </div>
+      </div>
+
+<div class="card team-card" style="text-align:center">
+  <div style="
+    background:#0d0f12; 
+    padding:8px; 
+    border-radius:var(--radius); 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    height:300px;">
+    <img src="santiago.jpg" alt="Foto de santiag" 
+         style="max-width:100%; max-height:100%; object-fit:contain; border-radius:calc(var(--radius) - 4px)">
+  </div>
+  <div class="team-meta" style="padding:12px">
+          <h3>Santiago Herrada</h3>
+          <p class="muted">Líder de planeación</p>
+        </div>
+      </div>
+
+<div class="card team-card" style="text-align:center">
+  <div style="
+    background:#0d0f12; 
+    padding:8px; 
+    border-radius:var(--radius); 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    height:300px;">
+    <img src="esteban.jpg" alt="Foto de Esteban Prieto" 
+         style="max-width:100%; max-height:100%; object-fit:contain; border-radius:calc(var(--radius) - 4px)">
+  </div>
+  <div class="team-meta" style="padding:12px">
+    <h3>Esteban Prieto</h3>
+    <p class="muted">Líder de calidad</p>
+  </div>
+</div>
+
+<div class="card team-card" style="text-align:center">
+  <div style="
+    background:#0d0f12; 
+    padding:8px; 
+    border-radius:var(--radius); 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    height:300px;">
+    <img src="nicolas.jpg" alt="Foto de nicolas" 
+         style="max-width:100%; max-height:100%; object-fit:contain; border-radius:calc(var(--radius) - 4px)">
+  </div>
+  <div class="team-meta" style="padding:12px">
+          <h3>Nicolás Cubillos</h3>
+          <p class="muted">Líder de soporte</p>
+        </div>
+      </div>
+
+<div class="card team-card" style="text-align:center">
+  <div style="
+    background:#0d0f12; 
+    padding:8px; 
+    border-radius:var(--radius); 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    height:300px;">
+    <img src="kerlon.jpg" alt="Foto de kerlon" 
+         style="max-width:100%; max-height:100%; object-fit:contain; border-radius:calc(var(--radius) - 4px)">
+  </div>
+  <div class="team-meta" style="padding:12px">
+          <h3>Kerlon Gutiérrez</h3>
+          <p class="muted">Líder de desarrollo</p>
+        </div>
+      </div>
+
+<div class="card team-card" style="text-align:center">
+  <div style="
+    background:#0d0f12; 
+    padding:8px; 
+    border-radius:var(--radius); 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    height:300px;">
+    <img src="matias.jpg" alt="Foto de Esteban Prieto" 
+         style="max-width:100%; max-height:100%; object-fit:contain; border-radius:calc(var(--radius) - 4px)">
+  </div>
+  <div class="team-meta" style="padding:12px">
+          <h3>Matías Marín</h3>
+          <p class="muted">Líder de arquitectura</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Contacto -->
+    <section id="contacto">
+      <div class="container">
+        <h2>Hablemos</h2>
+        <p class="muted">Cuéntanos tu idea. Te responderemos en menos de 24 horas.</p>
+        <form onsubmit="event.preventDefault(); alert('¡Gracias! Te contactaremos pronto.');">
+          <input type="text" name="nombre" placeholder="Nombre" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <textarea name="mensaje" placeholder="¿Qué necesitas construir?" required></textarea>
+          <button class="btn primary" type="submit">Enviar mensaje</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container foot">
+      <div class="brand">
+        <img src="/logo.jpg" alt="Logo print(Null)" />
+        <span class="name">print<span class="accent">(Null)</span></span>
+      </div>
+      <small>© <span id="y"></span> print(Null). Todos los derechos reservados.</small>
+    </div>
+  </footer>
+
+  <script>
+    // Año dinámico
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Drawer móvil
+    const drawer = document.getElementById('drawer');
+    const menuBtn = document.getElementById('menuBtn');
+    menuBtn?.addEventListener('click', () => {
+      const open = drawer.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open);
+      drawer.setAttribute('aria-hidden', !open);
+    });
+    window.closeDrawer = function(){
+      drawer.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+    }
+      // Modal Proyecto
+    const modal = document.getElementById('projectModal');
+    function openProjectModal(){
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+    }
+    function closeProjectModal(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+    }
+    modal?.addEventListener('click', (e)=>{ if(e.target === modal) closeProjectModal(); });
+
+    // Tabs
+    function switchTab(name){
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('open'));
+      document.getElementById('btn-'+name).classList.add('active');
+      document.getElementById('tab-'+name).classList.add('open');
+    }
+  </script>
+</body>
+</html>
