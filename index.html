@@ -261,27 +261,12 @@
           <button class="btn" onclick="closeProjectModal()" aria-label="Cerrar">Cerrar</button>
         </div>
 
-<!-- Tabs -->
-<div class="tabs" role="tablist" aria-label="Secciones del proyecto">
-  <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-bitacoras" id="btn-bitacoras" onclick="switchTab('bitacoras')">Bitácoras</button>
-  <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-script" id="btn-script" onclick="switchTab('script')">Script (fase iniciación)</button>
-  <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-importantes" id="btn-importantes" onclick="switchTab('importantes')">Documentos importantes</button>
-  <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-formatos" id="btn-formatos" onclick="switchTab('formatos')">Formatos elaborados</button>
-</div>
-
-<!-- Visor universal -->
-<div id="previewPane" class="preview-pane">
-  <div class="preview-head">
-    <span id="previewTitle" class="muted">Selecciona un documento para previsualizarlo aquí</span>
-    <a id="previewOpenNew" class="btn" href="#" target="_blank" rel="noopener" style="display:none">Abrir en pestaña</a>
-  </div>
-
-  <!-- Iframe solo para PDF o fallback -->
-  <iframe id="previewFrame" title="Visor" style="width:100%; height:65vh; border:none; background:#0d0f12; border-radius:12px; display:none"></iframe>
-
-  <!-- Contenedor HTML para docx/xlsx/csv renderizados -->
-  <div id="previewHtml" style="width:100%; min-height:65vh; background:#0d0f12; border-radius:12px; padding:16px; overflow:auto; display:none"></div>
-</div>
+        <!-- Tabs -->
+        <div class="tabs" role="tablist" aria-label="Secciones del proyecto">
+          <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-bitacora" id="btn-bitacora" onclick="switchTab('bitacora')">Bitácora</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-cripst" id="btn-cripst" onclick="switchTab('sripst')">Cripst</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-acta" id="btn-acta" onclick="switchTab('acta')">Acta de iniciación</button>
+        </div>
 
 
 <!-- Paneles -->
