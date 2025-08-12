@@ -8,127 +8,159 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0a0a0b;          /* Fondo principal */
-      --panel:#111214;       /* Tarjetas/nav */
-      --panel-2:#0f1012;     /* Variación */
-      --text:#e8e9ea;        /* Texto principal */
-      --muted:#9aa3ad;       /* Texto secundario */
-      --accent:#16c1d9;      /* Cian inspirado en el logo */
-      --accent-2:#58e6ff;    /* Cian claro para brillos */
-      --ring: 0 0 0 2px var(--accent) inset, 0 0 24px 2px color-mix(in oklab, var(--accent) 60%, transparent);
-      --radius: 18px;
-      --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.02);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1200px 800px at 70% -10%, rgba(22,193,217,.08), transparent 60%),
-                  radial-gradient(800px 600px at 0% 100%, rgba(88,230,255,.06), transparent 60%),
-                  var(--bg);
-      color:var(--text);
-      line-height:1.6;
-      letter-spacing:.1px;
-    }
-    a{color:var(--text); text-decoration:none}
-    .container{width:100%; max-width:1160px; margin-inline:auto; padding-inline:24px}
+  <!-- Previsualizador DOCX -->
+<script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
+<!-- Previsualizador XLSX/CSV -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<style>
+  :root{
+    --bg:#0a0a0b;
+    --panel:#111214;
+    --panel-2:#0f1012;
+    --text:#e8e9ea;
+    --muted:#9aa3ad;
+    --accent:#16c1d9;
+    --accent-2:#58e6ff;
+    --ring: 0 0 0 2px var(--accent) inset, 0 0 24px 2px color-mix(in oklab, var(--accent) 60%, transparent);
+    --radius: 18px;
+    --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.02);
+  }
 
-    /* Nav */
-    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px)}
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:16px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,.04);
-      background:linear-gradient(180deg, rgba(17,18,20,.85), rgba(17,18,20,.65));
-    }
-    .brand{display:flex; align-items:center; gap:12px; font-weight:700}
-    .brand img{height:36px; width:auto; display:block; filter:drop-shadow(0 4px 18px rgba(22,193,217,.25))}
-    .brand .name{font-weight:800; letter-spacing:.4px}
-    .brand .accent{color:var(--accent)}
-    nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
-    nav a{padding:10px 12px; border-radius:12px; color:var(--muted)}
-    nav a:hover{color:var(--text); background:#0d0f12}
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";
+    background:
+      radial-gradient(1200px 800px at 70% -10%, rgba(22,193,217,.08), transparent 60%),
+      radial-gradient(800px 600px at 0% 100%, rgba(88,230,255,.06), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    letter-spacing:.1px;
+  }
 
-    .cta{display:flex; align-items:center; gap:12px}
-    .btn{padding:10px 16px; border-radius:14px; border:1px solid rgba(255,255,255,.07); background:linear-gradient(180deg,#17191d,#121418); box-shadow:var(--shadow); color:var(--text); font-weight:600}
-    .btn:hover{box-shadow:0 0 0 2px rgba(255,255,255,.04) inset, 0 14px 40px rgba(0,0,0,.5)}
-    .btn.primary{border: none; background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 75%, #0b1114), #0d1316); color:#041316}
-    .btn.primary:hover{box-shadow: var(--ring)}
+  a{color:var(--text); text-decoration:none}
+  .container{width:100%; max-width:1160px; margin-inline:auto; padding-inline:24px}
 
-    /* Hero */
-    .hero{position:relative; overflow:hidden}
-    .hero .inner{display:grid; grid-template-columns: 1.2fr .8fr; gap:40px; align-items:center; padding:60px 0 40px}
-    .badge{display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px; border:1px solid rgba(22,193,217,.25); color:var(--accent-2); background:rgba(22,193,217,.06)}
-    .display{font-size:56px; line-height:1.05; margin:16px 0; letter-spacing:.2px}
-    .lead{color:var(--muted); font-size:18px; max-width:58ch}
-    .hero-cta{display:flex; gap:12px; margin-top:26px}
+  /* Nav */
+  header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px)}
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,.04);
+    background:linear-gradient(180deg, rgba(17,18,20,.85), rgba(17,18,20,.65));
+  }
+  .brand{display:flex; align-items:center; gap:12px; font-weight:700}
+  .brand img{height:36px; width:auto; display:block; filter:drop-shadow(0 4px 18px rgba(22,193,217,.25))}
+  .brand .name{font-weight:800; letter-spacing:.4px}
+  .brand .accent{color:var(--accent)}
+  nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
+  nav a{padding:10px 12px; border-radius:12px; color:var(--muted)}
+  nav a:hover{color:var(--text); background:#0d0f12}
 
-    .logo-card{position:relative; border-radius:24px; background:radial-gradient(60% 60% at 50% 0%, rgba(22,193,217,.18), transparent 60%), var(--panel); padding:32px; box-shadow:var(--shadow);}
-    .logo-card .glow{position:absolute; inset:-40px; background:radial-gradient(50% 50% at 50% 50%, rgba(22,193,217,.18), transparent 70%); filter:blur(40px); opacity:.9; pointer-events:none}
-    .logo-wrap{display:grid; place-items:center; padding:22px; border-radius:20px; background:linear-gradient(180deg, #0e1013, #0b0d10); border:1px solid rgba(255,255,255,.06)}
-    .logo{max-width:340px; width:100%; height:auto}
-    .caption{color:var(--muted); text-align:center; margin-top:12px; font-size:14px}
+  .cta{display:flex; align-items:center; gap:12px}
+  .btn{padding:10px 16px; border-radius:14px; border:1px solid rgba(255,255,255,.07); background:linear-gradient(180deg,#17191d,#121418); box-shadow:var(--shadow); color:var(--text); font-weight:600}
+  .btn:hover{box-shadow:0 0 0 2px rgba(255,255,255,.04) inset, 0 14px 40px rgba(0,0,0,.5)}
+  .btn.primary{border:none; background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 75%, #0b1114), #0d1316); color:#041316}
+  .btn.primary:hover{box-shadow:var(--ring)}
 
-    /* Sections */
-    section{padding:72px 0}
-    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
-    .card{background:linear-gradient(180deg, var(--panel), var(--panel-2)); border:1px solid rgba(255,255,255,.07); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow)}
-    .card h3{margin:4px 0 6px}
-    .eyebrow{color:var(--accent-2); font-weight:700; letter-spacing:.25px; text-transform:uppercase; font-size:12px}
-    .muted{color:var(--muted)}
+  /* Hero */
+  .hero{position:relative; overflow:hidden}
+  .hero .inner{display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:center; padding:60px 0 40px}
+  .badge{display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px; border:1px solid rgba(22,193,217,.25); color:var(--accent-2); background:rgba(22,193,217,.06)}
+  .display{font-size:56px; line-height:1.05; margin:16px 0; letter-spacing:.2px}
+  .lead{color:var(--muted); font-size:18px; max-width:58ch}
+  .hero-cta{display:flex; gap:12px; margin-top:26px}
 
-    /* Showcase strip */
-    .strip{display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:center}
-    .strip .img{border-radius:var(--radius); background: radial-gradient(60% 60% at 50% 0%, rgba(22,193,217,.12), transparent 60%), #0d0f12; border:1px solid rgba(255,255,255,.06); height:320px; display:grid; place-items:center; color:var(--muted)}
+  .logo-card{position:relative; border-radius:24px; background:radial-gradient(60% 60% at 50% 0%, rgba(22,193,217,.18), transparent 60%), var(--panel); padding:32px; box-shadow:var(--shadow);}
+  .logo-card .glow{position:absolute; inset:-40px; background:radial-gradient(50% 50% at 50% 50%, rgba(22,193,217,.18), transparent 70%); filter:blur(40px); opacity:.9; pointer-events:none}
+  .logo-wrap{display:grid; place-items:center; padding:22px; border-radius:20px; background:linear-gradient(180deg, #0e1013, #0b0d10); border:1px solid rgba(255,255,255,.06)}
+  .logo{max-width:340px; width:100%; height:auto}
+  .caption{color:var(--muted); text-align:center; margin-top:12px; font-size:14px}
 
-    /* Contact */
-    form{display:grid; gap:14px; max-width:520px}
-    input, textarea{background:#0f1216; color:var(--text); border-radius:14px; border:1px solid rgba(255,255,255,.07); padding:12px 14px; outline:none}
-    input:focus, textarea:focus{box-shadow: var(--ring)}
-    textarea{min-height:120px; resize:vertical}
+  /* Sections */
+  section{padding:72px 0}
+  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+  .card{background:linear-gradient(180deg, var(--panel), var(--panel-2)); border:1px solid rgba(255,255,255,.07); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow)}
+  .card h3{margin:4px 0 6px}
+  .eyebrow{color:var(--accent-2); font-weight:700; letter-spacing:.25px; text-transform:uppercase; font-size:12px}
+  .muted{color:var(--muted)}
 
-/* Team cards */
-.team-card{padding:0; overflow:hidden; text-align:center}
-.team-photo{width:100%; height:300px; overflow:hidden; border-radius:var(--radius) var(--radius) 0 0; background:#0d0f12; border-bottom:1px solid rgba(255,255,255,.06)}
-.team-photo img{width:100%; height:100%; object-fit:cover; display:block}
-.team-meta{padding:14px 16px}
-@media (max-width:960px){ .team-photo{height:240px} }
+  /* Showcase strip */
+  .strip{display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:center}
+  .strip .img{border-radius:var(--radius); background: radial-gradient(60% 60% at 50% 0%, rgba(22,193,217,.12), transparent 60%), #0d0f12; border:1px solid rgba(255,255,255,.06); height:320px; display:grid; place-items:center; color:var(--muted)}
 
-    /* Footer */
-    footer{border-top:1px solid rgba(255,255,255,.06); background:#0b0c0f; padding:32px 0; color:var(--muted)}
-    .foot{display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between}
-    .foot small{opacity:.9}
+  /* Contact */
+  form{display:grid; gap:14px; max-width:520px}
+  input, textarea{background:#0f1216; color:var(--text); border-radius:14px; border:1px solid rgba(255,255,255,.07); padding:12px 14px; outline:none}
+  input:focus, textarea:focus{box-shadow:var(--ring)}
+  textarea{min-height:120px; resize:vertical}
 
-    /* Responsive */
-    .menu-btn{display:none}
-    @media (max-width: 960px){
-      .hero .inner{grid-template-columns:1fr; padding-top:36px}
-      .display{font-size:42px}
-      .grid-3{grid-template-columns:1fr}
-      .strip{grid-template-columns:1fr}
-      nav ul{display:none}
-      .menu-btn{display:inline-flex}
-      .drawer{position:fixed; inset:64px 16px auto; background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:14px; box-shadow:var(--shadow); display:none}
-      .drawer.open{display:block}
-      .drawer a{display:block; padding:10px 12px; border-radius:10px; color:var(--muted)}
-      .drawer a:hover{background:#0d0f12; color:var(--text)}
-    }
-      /* Modal + Tabs */
-    .modal{position:fixed; inset:0; background:rgba(0,0,0,.62); display:none; align-items:center; justify-content:center; padding:20px}
-    .modal.open{display:flex}
-    .modal-content{width:min(960px,100%); background:linear-gradient(180deg, var(--panel), var(--panel-2)); border:1px solid rgba(255,255,255,.08); border-radius:20px; box-shadow:var(--shadow); padding:18px}
-    .modal-head{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:6px 6px 14px; border-bottom:1px solid rgba(255,255,255,.06)}
-    .tabs{display:flex; gap:8px; flex-wrap:wrap; padding:14px 6px 0}
-    .tab-btn{background:#0f1216; border:1px solid rgba(255,255,255,.08); color:var(--muted); padding:8px 12px; border-radius:12px; cursor:pointer}
-    .tab-btn.active{color:#041316; background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 75%, #0b1114), #0d1316); border:none; box-shadow:var(--ring)}
-    .tab-panel{display:none; padding:14px 6px 6px}
-    .tab-panel.open{display:block}
-    .doc-list{list-style:none; padding:0; margin:8px 0 0}
-    .doc-list li{display:flex; align-items:center; gap:8px; padding:10px 12px; border:1px solid rgba(255,255,255,.06); border-radius:12px; background:#0e1013; margin-bottom:10px}
-    .doc-list a{color:var(--accent-2); font-weight:600}
-  </style>
+  /* Team cards */
+  .team-card{padding:0; overflow:hidden; text-align:center}
+  .team-photo{width:100%; height:300px; overflow:hidden; border-radius:var(--radius) var(--radius) 0 0; background:#0d0f12; border-bottom:1px solid rgba(255,255,255,.06)}
+  .team-photo img{width:100%; height:100%; object-fit:cover; display:block}
+  .team-meta{padding:14px 16px}
+  @media (max-width:960px){ .team-photo{height:240px} }
+
+  /* Footer */
+  footer{border-top:1px solid rgba(255,255,255,.06); background:#0b0c0f; padding:32px 0; color:var(--muted)}
+  .foot{display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between}
+  .foot small{opacity:.9}
+
+  /* Responsive */
+  .menu-btn{display:none}
+  @media (max-width:960px){
+    .hero .inner{grid-template-columns:1fr; padding-top:36px}
+    .display{font-size:42px}
+    .grid-3{grid-template-columns:1fr}
+    .strip{grid-template-columns:1fr}
+    nav ul{display:none}
+    .menu-btn{display:inline-flex}
+    .drawer{position:fixed; inset:64px 16px auto; background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:14px; box-shadow:var(--shadow); display:none}
+    .drawer.open{display:block}
+    .drawer a{display:block; padding:10px 12px; border-radius:10px; color:var(--muted)}
+    .drawer a:hover{background:#0d0f12; color:var(--text)}
+  }
+
+  /* Modal + Tabs */
+  .modal{position:fixed; inset:0; background:rgba(0,0,0,.62); display:none; align-items:center; justify-content:center; padding:20px}
+  .modal.open{display:flex}
+  .modal-content{
+    width:min(960px,100%);
+    max-height:90vh;              /* <- más cómodo para muchos archivos */
+    overflow:auto;                /* <- scroll interno */
+    background:linear-gradient(180deg, var(--panel), var(--panel-2));
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px; box-shadow:var(--shadow); padding:18px
+  }
+  .modal-head{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:6px 6px 14px; border-bottom:1px solid rgba(255,255,255,.06)}
+  .tabs{display:flex; gap:8px; flex-wrap:wrap; padding:14px 6px 0}
+  .tab-btn{background:#0f1216; border:1px solid rgba(255,255,255,.08); color:var(--muted); padding:8px 12px; border-radius:12px; cursor:pointer}
+  .tab-btn.active{color:#041316; background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 75%, #0b1114), #0d1316); border:none; box-shadow:var(--ring)}
+  .tab-panel{display:none; padding:14px 6px 6px}
+  .tab-panel.open{display:block}
+
+  /* Listas de documentos */
+  .doc-list{list-style:none; padding:0; margin:8px 0 0}
+  .doc-list li{display:flex; align-items:center; gap:8px; padding:10px 12px; border:1px solid rgba(255,255,255,.06); border-radius:12px; background:#0e1013; margin-bottom:10px}
+  .doc-list a{color:var(--accent-2); font-weight:600; word-break:break-word}
+
+  /* Acordeones para Bitácoras */
+  .acc{border:1px solid rgba(255,255,255,.08); border-radius:12px; margin:10px 0; background:#0f1013}
+  .acc summary{cursor:pointer; padding:10px 14px; font-weight:600}
+  .acc summary:hover{background:#0d0f12}
+  .acc .inner{padding:8px 12px 12px}
+
+.preview-pane{margin-top:12px}
+.preview-head{display:flex; gap:10px; align-items:center; justify-content:space-between; margin-bottom:10px}
+#previewFrame{width:100%; height:65vh; border:none; background:#0d0f12; border-radius:12px}
+
+
+</style>
+
+
+
 </head>
 <body>
   <!-- Header / Nav -->
@@ -152,8 +184,6 @@
         <button class="btn primary menu-btn" id="menuBtn" aria-controls="drawer" aria-expanded="false">Menú</button>
       </div>
     </div>
-
-    
   </header>
 
   <!-- Hero -->
@@ -175,7 +205,7 @@
             <!-- Reemplaza por tu imagen. Mantén el alt para accesibilidad. -->
             <img class="logo" src="./assets/logo.jpg" alt="Logo de la compañía print(Null)" />
           </div>
-          <p class="caption">Identidad minimalista: tipografía limpia, acento cian, fondo negro profundo.</p>
+     
         </div>
       </div>
     </section>
@@ -231,40 +261,119 @@
           <button class="btn" onclick="closeProjectModal()" aria-label="Cerrar">Cerrar</button>
         </div>
 
-        <!-- Tabs -->
-        <div class="tabs" role="tablist" aria-label="Secciones del proyecto">
-          <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-bitacora" id="btn-bitacora" onclick="switchTab('bitacora')">Bitácora</button>
-          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-cripst" id="btn-cripst" onclick="switchTab('sripst')">Cripst</button>
-          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-acta" id="btn-acta" onclick="switchTab('acta')">Acta de iniciación</button>
-        </div>
+<!-- Tabs -->
+<div class="tabs" role="tablist" aria-label="Secciones del proyecto">
+  <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-bitacoras" id="btn-bitacoras" onclick="switchTab('bitacoras')">Bitácoras</button>
+  <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-script" id="btn-script" onclick="switchTab('script')">Script (fase iniciación)</button>
+  <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-importantes" id="btn-importantes" onclick="switchTab('importantes')">Documentos importantes</button>
+  <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-formatos" id="btn-formatos" onclick="switchTab('formatos')">Formatos elaborados</button>
+</div>
 
-        <!-- Tab panels -->
-        <div id="tab-bitacora" class="tab-panel open" role="tabpanel" aria-labelledby="btn-bitacora">
-          <ul class="doc-list">
-            <!-- Reemplaza los # por rutas reales a tus documentos (PDF, DOCX, Google Docs, etc.) -->
-            <li><a href="#" target="_blank" rel="noopener">Bitácora - Semana 1</a><span class="muted"> • objetivos, avances y pendientes</span></li>
-            <li><a href="#" target="_blank" rel="noopener">Bitácora - Semana 2</a><span class="muted"> • pruebas de prototipo y feedback</span></li>
-            <li><a href="#" target="_blank" rel="noopener">Bitácora - Semana 3</a><span class="muted"> • integración con API</span></li>
-          </ul>
-        </div>
+<!-- Visor universal -->
+<div id="previewPane" class="preview-pane">
+  <div class="preview-head">
+    <span id="previewTitle" class="muted">Selecciona un documento para previsualizarlo aquí</span>
+    <a id="previewOpenNew" class="btn" href="#" target="_blank" rel="noopener" style="display:none">Abrir en pestaña</a>
+  </div>
 
-        <div id="tab-cripst" class="tab-panel" role="tabpanel" aria-labelledby="btn-cripst">
-          <ul class="doc-list">
-            <li><a href="#" target="_blank" rel="noopener">SRIPST - Contexto y alcance</a></li>
-            <li><a href="#" target="_blank" rel="noopener">SRIPST - Requisitos funcionales y no funcionales</a></li>
-            <li><a href="#" target="_blank" rel="noopener">SRIPST - Plan de pruebas</a></li>
-          </ul>
-        </div>
+  <!-- Iframe solo para PDF o fallback -->
+  <iframe id="previewFrame" title="Visor" style="width:100%; height:65vh; border:none; background:#0d0f12; border-radius:12px; display:none"></iframe>
 
-        <div id="tab-acta" class="tab-panel" role="tabpanel" aria-labelledby="btn-acta">
-          <ul class="doc-list">
-            <li><a href="#" target="_blank" rel="noopener">Acta de iniciación - Versión 1.0</a></li>
-            <li><a href="#" target="_blank" rel="noopener">Matriz de interesados</a></li>
-            <li><a href="#" target="_blank" rel="noopener">Cronograma inicial</a></li>
-          </ul>
-        </div>
-      </div>
+  <!-- Contenedor HTML para docx/xlsx/csv renderizados -->
+  <div id="previewHtml" style="width:100%; min-height:65vh; background:#0d0f12; border-radius:12px; padding:16px; overflow:auto; display:none"></div>
+</div>
+
+
+<!-- Paneles -->
+<div id="tab-bitacoras" class="tab-panel open" role="tabpanel" aria-labelledby="btn-bitacoras">
+  <!-- Un acordeón por persona. Dentro puedes agregar N archivos.  -->
+  <details class="acc">
+    <summary>Bitácoras — Leidy Giraldo</summary>
+    <div class="inner">
+      <ul class="doc-list">
+        <li><a class="doc-link" href="./docs/bitacoras/BitacoraTiempo Leidy Giraldo.pdf">Semana 01</a></li>
+      </ul>
     </div>
+  </details>
+
+  <details class="acc">
+    <summary>Bitácoras — Santiago Herrada</summary>
+    <div class="inner">
+      <ul class="doc-list">
+        <li><a class="doc-link" href="./docs/bitacoras/BitacoraTiempo Santiago Herrada.pdf">Semana 01</a></li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary>Bitácoras — Esteban Prieto</summary>
+    <div class="inner">
+      <ul class="doc-list">
+        <li><a class="doc-link" href="./docs/bitacoras/BitacoraTiempo Esteban Prieto.pdf">Semana 01</a></li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary>Bitácoras — Nicolás Cubillos</summary>
+    <div class="inner">
+      <ul class="doc-list">
+        <li><a class="doc-link" href="./docs/bitacoras/BitacoraTiempo Nicolas Cubillos.pdf">Semana 01</a></li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary>Bitácoras — Kerlon Gutiérrez</summary>
+    <div class="inner">
+      <ul class="doc-list">
+        <li><a class="doc-link" href="./docs/bitacoras/BitacoraTiempoKerlon.pdf">Semana 01</a></li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary>Bitácoras — Matías Marín</summary>
+    <div class="inner">
+      <ul class="doc-list">
+        <li><a class="doc-link" href="./docs/bitacoras/BitacoraMatias.pdf">Semana 01</a></li>
+      </ul>
+    </div>
+  </details>
+</div>
+
+<div id="tab-script" class="tab-panel" role="tabpanel" aria-labelledby="btn-script">
+  <ul class="doc-list">
+    <li><a class="doc-link" href="./docs/script/Script definición de procesos Fase iniciacion.pdf">Script — Fase de iniciación</a><span class="muted"> • versión inicial</span></li>
+  </ul>
+</div>
+
+<div id="tab-importantes" class="tab-panel" role="tabpanel" aria-labelledby="btn-importantes">
+  <ul class="doc-list">
+    <li><a class="doc-link" href="./docs/importantes/DT_Ini_01_ActaIniciacion_Print(Null).pdf">Acta de iniciación</a></li>
+    <li><a class="doc-link" href="./docs/importantes/logDefectos fase 1.pdf">Log de defectos</a></li>
+    <li><a class="doc-link" href="./docs/importantes/dt_ptl_controlAsignaciones_definitivo fase 1.xlsx">Control de asignaciones</a></li>
+    <li><a class="doc-link" href="./docs/importantes/Acta de reunion ciclo 1.xlsx">Actas de reunión</a></li>
+    <li><a class="doc-link" href="./docs/importantes/Maestro de documentos fase 1.xlsx">Maestro de documentos</a></li>
+    <li><a class="doc-link" href="./docs/importantes/Informe final.pdf">Informe final</a></li>
+  </ul>
+</div>
+
+<div id="tab-formatos" class="tab-panel" role="tabpanel" aria-labelledby="btn-formatos">
+  <ul class="doc-list">
+    <!-- Plantillas/formatos usados (pueden ser .docx/.xlsx/.pdf) -->
+    <li><a href="./docs/formatos/Acta de reunion.xlsx" target="_blank" rel="noopener">Formato: Acta de reunión</a></li>
+    <li><a href="./docs/formatos/BitacoraTiempo.docx" target="_blank" rel="noopener">Formato: Bitácora de tiempo</a></li>
+    <li><a href="./docs/formatos/DT_Ini_01_ActaIniciacion_.docx" target="_blank" rel="noopener">Formato: Acta de iniciación</a></li>
+    <li><a href="./docs/formatos/dt_ptl_controlAsignaciones(SEMANA 1).csv" target="_blank" rel="noopener">Formato: Control de asignaciones</a></li>
+    <li><a href="./docs/formatos/logDefectos.docx" target="_blank" rel="noopener">Formato: Log de defectos</a></li>
+    <li><a href="./docs/formatos/Maestro de documentos.xlsx" target="_blank" rel="noopener">Formato: Maestro de documentos</a></li>
+    <li><a href="./docs/formatos/Script definición de procesos.docx" target="_blank" rel="noopener">Formato: Script definición de procesos</a></li>
+  </ul>
+</div> 
+<!-- fin paneles -->
+</div> <!-- /.modal-content -->
+</div> <!-- /#projectModal -->
 
 <!-- Nosotros -->
 <section id="nosotros">
@@ -301,7 +410,7 @@
     justify-content:center; 
     height:300px;">
     <img src="./assets/santiago.jpg" alt="Foto de santiag" 
-         style="max-width:100%; max-height:100%; object-fit:contain; border-radius:calc(var(--radius) - 4px)">
+         style="max-width:80%; max-height:100%; object-fit:contain; border-radius:calc(var(--radius) - 4px)">
   </div>
   <div class="team-meta" style="padding:12px">
           <h3>Santiago Herrada</h3>
@@ -318,8 +427,8 @@
     align-items:center; 
     justify-content:center; 
     height:300px;">
-    <img src="./assets/esteban.jpg" alt="Foto de Esteban Prieto" 
-         style="max-width:100%; max-height:100%; object-fit:contain; border-radius:calc(var(--radius) - 4px)">
+    <img src="./assets/Esteban.jpg" alt="Foto de Esteban Prieto" 
+         style="max-width:80%; max-height:100%; object-fit:contain; border-radius:calc(var(--radius) - 4px)">
   </div>
   <div class="team-meta" style="padding:12px">
     <h3>Esteban Prieto</h3>
@@ -355,7 +464,7 @@
     justify-content:center; 
     height:300px;">
     <img src="./assets/kerlon.jpg" alt="Foto de kerlon" 
-         style="max-width:100%; max-height:100%; object-fit:contain; border-radius:calc(var(--radius) - 4px)">
+         style="max-width:80%; max-height:100%; object-fit:contain; border-radius:calc(var(--radius) - 4px)">
   </div>
   <div class="team-meta" style="padding:12px">
           <h3>Kerlon Gutiérrez</h3>
@@ -373,7 +482,7 @@
     justify-content:center; 
     height:300px;">
     <img src="./assets/matias.jpg" alt="Foto de Esteban Prieto" 
-         style="max-width:100%; max-height:100%; object-fit:contain; border-radius:calc(var(--radius) - 4px)">
+         style="max-width:80%; max-height:100%; object-fit:contain; border-radius:calc(var(--radius) - 4px)">
   </div>
   <div class="team-meta" style="padding:12px">
           <h3>Matías Marín</h3>
@@ -410,43 +519,166 @@
       <small>© <span id="y"></span> print(Null). Todos los derechos reservados.</small>
     </div>
   </footer>
+<script>
+  // Año dinámico
+  document.getElementById('y').textContent = new Date().getFullYear();
 
-  <script>
-    // Año dinámico
-    document.getElementById('y').textContent = new Date().getFullYear();
+  // Drawer móvil
+  const drawer = document.getElementById('drawer');
+  const menuBtn = document.getElementById('menuBtn');
+  menuBtn?.addEventListener('click', () => {
+    const open = drawer.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+    drawer.setAttribute('aria-hidden', !open);
+  });
+  window.closeDrawer = function(){
+    drawer.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    drawer.setAttribute('aria-hidden', 'true');
+  }
 
-    // Drawer móvil
-    const drawer = document.getElementById('drawer');
-    const menuBtn = document.getElementById('menuBtn');
-    menuBtn?.addEventListener('click', () => {
-      const open = drawer.classList.toggle('open');
-      menuBtn.setAttribute('aria-expanded', open);
-      drawer.setAttribute('aria-hidden', !open);
+  // Modal Proyecto
+  const modal = document.getElementById('projectModal');
+  function openProjectModal(){
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+  }
+  function closeProjectModal(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+  }
+  window.openProjectModal = openProjectModal;
+  window.closeProjectModal = closeProjectModal;
+  modal?.addEventListener('click', (e)=>{ if(e.target === modal) closeProjectModal(); });
+
+  // Tabs
+  function switchTab(name){
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('open'));
+    document.getElementById('btn-'+name).classList.add('active');
+    document.getElementById('tab-'+name).classList.add('open');
+
+    const first = document.querySelector('#tab-'+name+' .doc-link');
+    const frame = document.getElementById('previewFrame');
+    if(first && frame && !frame.dataset.lockedByUser){
+      setPreview(first.getAttribute('href'), first.textContent.trim());
+    }
+  }
+  window.switchTab = switchTab;
+
+  // ---------- PREVIEWER LOCAL (PDF / DOCX / XLSX / CSV) ----------
+  const $frame = () => document.getElementById('previewFrame');
+  const $html  = () => document.getElementById('previewHtml');
+  const $title = () => document.getElementById('previewTitle');
+  const $open  = () => document.getElementById('previewOpenNew');
+
+  function absUrl(rel){ return new URL(rel, window.location.href).href; }
+  function extOf(url){
+    const q = url.split('?')[0].split('#')[0];
+    return (q.split('.').pop() || '').toLowerCase();
+  }
+  function showIframe(src, label, openHref){
+    const f = $frame(), h = $html();
+    h.style.display = 'none'; h.innerHTML = '';
+    f.style.display = 'block'; f.src = src;
+    if($title()) $title().textContent = label || '';
+    if($open()){ $open().href = openHref || src; $open().style.display = 'inline-flex'; }
+  }
+  function showHtml(html, label, openHref){
+    const f = $frame(), h = $html();
+    f.style.display = 'none'; f.src = 'about:blank';
+    h.style.display = 'block'; h.innerHTML = html || '<p class="muted">Sin contenido.</p>';
+    if($title()) $title().textContent = label || '';
+    if($open()){ $open().href = openHref; $open().style.display = openHref ? 'inline-flex' : 'none'; }
+  }
+
+  async function renderDOCX(url, label){
+    const resp = await fetch(url);
+    const buf  = await resp.arrayBuffer();
+    const result = await window.mammoth.convertToHtml({arrayBuffer: buf});
+    // Estilo básico para el contenido
+    const wrapped = `<article style="max-width:900px;margin:auto;color:#e8e9ea">${result.value}</article>`;
+    showHtml(wrapped, label, url);
+  }
+
+  async function renderXLS(url, label){
+    const resp = await fetch(url);
+    const buf  = await resp.arrayBuffer();
+    const workbook = XLSX.read(buf, {type:'array'});
+
+    // primera hoja → tabla HTML
+    const sheetName = workbook.SheetNames[0];
+    const sheet = workbook.Sheets[sheetName];
+    const html = XLSX.utils.sheet_to_html(sheet, {header:'', footer:''});
+    const wrapped = `
+      <div style="max-width:100%;overflow:auto">
+        <h4 style="margin:0 0 10px">${sheetName}</h4>
+        <div class="table-wrap">${html}</div>
+      </div>`;
+    showHtml(wrapped, label, url);
+  }
+
+  async function renderCSV(url, label){
+    const resp = await fetch(url);
+    const text = await resp.text();
+    const wb = XLSX.read(text, {type:'string'});
+    const sheet = wb.Sheets[wb.SheetNames[0]];
+    const html = XLSX.utils.sheet_to_html(sheet, {header:'', footer:''});
+    showHtml(html, label, url);
+  }
+
+  function setPreview(href, label){
+    const url = absUrl(href);
+    const ext = extOf(url);
+
+    try{
+      if(ext === 'pdf'){
+        showIframe(url, label, url);
+      }else if(ext === 'docx'){
+        renderDOCX(url, label);
+      }else if(ext === 'xlsx' || ext === 'xls'){
+        renderXLS(url, label);
+      }else if(ext === 'csv'){
+        renderCSV(url, label);
+      }else{
+        // fallback: intenta abrir en iframe (p.ej. txt, md)
+        showIframe(url, label, url);
+      }
+    }catch(err){
+      console.error('Preview error', err);
+      // último recurso: Google Viewer
+      const viewer = 'https://docs.google.com/viewer?embedded=true&url=' + encodeURIComponent(url);
+      showIframe(viewer, label, url);
+    }
+  }
+  window.setPreview = setPreview;
+
+  // Enlaces que se previsualizan
+  function bindDocLinks(){
+    document.querySelectorAll('.doc-link').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const f = $frame(); if(f) f.dataset.lockedByUser = "1";
+        setPreview(a.getAttribute('href'), a.textContent.trim());
+      }, {passive:false});
     });
-    window.closeDrawer = function(){
-      drawer.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
-      drawer.setAttribute('aria-hidden', 'true');
-    }
-      // Modal Proyecto
-    const modal = document.getElementById('projectModal');
-    function openProjectModal(){
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden','false');
-    }
-    function closeProjectModal(){
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden','true');
-    }
-    modal?.addEventListener('click', (e)=>{ if(e.target === modal) closeProjectModal(); });
+  }
+  bindDocLinks();
 
-    // Tabs
-    function switchTab(name){
-      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('open'));
-      document.getElementById('btn-'+name).classList.add('active');
-      document.getElementById('tab-'+name).classList.add('open');
+  // Al abrir el modal por primera vez, mostrar el primer doc del tab activo
+  let booted = false;
+  const _openProjectModal = window.openProjectModal;
+  window.openProjectModal = function(){
+    _openProjectModal();
+    if(!booted){
+      booted = true;
+      const first = document.querySelector('.tab-panel.open .doc-link') || document.querySelector('.doc-link');
+      if(first){ setPreview(first.getAttribute('href'), first.textContent.trim()); }
     }
-  </script>
+  };
+</script>
+
+
+
 </body>
 </html>
