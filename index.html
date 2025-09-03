@@ -157,6 +157,79 @@
 #previewFrame{width:100%; height:65vh; border:none; background:#0d0f12; border-radius:12px}
 
 
+/* === CHECKLIST === */
+.checklist { padding:72px 0 }
+.check-head{ display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; margin-bottom:16px }
+.check-controls{ display:flex; flex-wrap:wrap; gap:10px; align-items:center }
+
+.check-card{
+  background:linear-gradient(180deg, var(--panel), var(--panel-2));
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--radius);
+  padding:16px;
+  box-shadow:var(--shadow);
+}
+
+.phase-tabs{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px }
+.phase-btn{
+  background:#0f1216; border:1px solid rgba(255,255,255,.08);
+  color:var(--muted); padding:8px 12px; border-radius:12px; cursor:pointer
+}
+.phase-btn.active{
+  color:#041316; background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 75%, #0b1114), #0d1316);
+  border:none; box-shadow:var(--ring)
+}
+
+.checkbar{
+  height:10px; width:100%; background:#0d0f12; border:1px solid rgba(255,255,255,.06);
+  border-radius:999px; overflow:hidden;
+}
+.checkbar > span{
+  display:block; height:100%; width:0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition:width .25s ease;
+}
+
+.check-row{
+  display:grid; grid-template-columns:auto 1fr auto;
+  gap:10px; align-items:center;
+  padding:10px 12px; border:1px solid rgba(255,255,255,.06);
+  border-radius:12px; background:#0e1013; margin-bottom:8px
+}
+.check-row input[type="checkbox"]{ width:18px; height:18px; accent-color:var(--accent) }
+.check-title{ line-height:1.4 }
+.check-title.done{ color:var(--muted); text-decoration:line-through; opacity:.75 }
+.check-meta{ font-size:12px; color:var(--muted) }
+
+.check-actions{ display:flex; gap:6px }
+.icon-btn{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:8px 10px; border-radius:10px; background:#0f1216;
+  border:1px solid rgba(255,255,255,.08); color:var(--muted); cursor:pointer;
+}
+.icon-btn:hover{ color:var(--text); background:#0d0f12 }
+.icon-danger{ border-color:rgba(255,60,60,.25) }
+
+.add-form{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px }
+.add-form input[type="text"]{
+  flex:1 1 280px; background:#0f1216; color:var(--text); border-radius:12px;
+  border:1px solid rgba(255,255,255,.08); padding:10px 12px; outline:none
+}
+.add-form select{
+  background:#0f1216; color:var(--text); border-radius:12px; border:1px solid rgba(255,255,255,.08);
+  padding:10px 12px; outline:none
+}
+
+.filter-select{
+  background:#0f1216; color:var(--text); border-radius:10px;
+  border:1px solid rgba(255,255,255,.08); padding:8px 10px; outline:none
+}
+
+@media (max-width:960px){
+  .check-row{ grid-template-columns: auto 1fr; }
+  .check-actions{ grid-column: 1 / -1 }
+}
+
 </style>
 
 
@@ -176,6 +249,7 @@
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#showcase">Proyectos</a></li>
           <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#checklist">Checklist</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </nav>
@@ -268,8 +342,10 @@
 <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-importantes" id="btn-importantes" onclick="switchTab('importantes')">Documentos importantes</button>
 <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-asignaciones" id="btn-asignaciones" onclick="switchTab('asignaciones')">Control de asignaciones</button>
 <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-defectos" id="btn-defectos" onclick="switchTab('defectos')">Log de defectos</button>
+<button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-requerimientos" id="btn-requerimientos" onclick="switchTab('requerimientos')">Requerimientos</button>
 <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-informe" id="btn-informe" onclick="switchTab('informe')">Informe final</button>
   <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-formatos" id="btn-formatos" onclick="switchTab('formatos')">Formatos elaborados</button>
+  
 </div>
 
 <!-- Visor universal -->
@@ -295,6 +371,7 @@
       <ul class="doc-list">
         <li><a class="doc-link" href="./docs/bitacoras/leidy/BitacoraTiempo Leidy Giraldo.pdf">Semana 01 fase iniciación</a></li>
          <li><a class="doc-link" href="./docs/bitacoras/leidy/BitacoraTiempo Leidy Giraldo FASE ESTRATEGIA.pdf">Semana 02 fase estrategia</a></li>
+         <li><a class="doc-link" href="./docs/bitacoras/leidy/BitacoraTiempo Leidy Giraldo FASE requerimientos.pdf">Semana 03 fase requerimientos</a></li>
       </ul>
     </div>
   </details>
@@ -305,6 +382,7 @@
       <ul class="doc-list">
         <li><a class="doc-link" href="./docs/bitacoras/santiago/Santiago Herrada.pdf">Semana 01 fase iniciación</a></li>
         <li><a class="doc-link" href="./docs/bitacoras/santiago/BitacoraTiempo fase estrategia.pdf">Semana 02 fase estrategia</a></li>
+        <li><a class="doc-link" href="./docs/bitacoras/santiago/BitacoraTiempode fase requerimientos.pdf">Semana 03 fase requerimientos</a></li>
       </ul>
     </div>
   </details>
@@ -315,6 +393,7 @@
       <ul class="doc-list">
         <li><a class="doc-link" href="./docs/bitacoras/esteban/Esteban Prieto.pdf">Semana 01 fase iniciación</a></li>
         <li><a class="doc-link" href="./docs/bitacoras/esteban/Bitacora Tiempo fase estrategia.pdf">Semana 02 fase estrategia</a></li>
+        <li><a class="doc-link" href="./docs/bitacoras/esteban/Bitacora Tiempo 3 fase requerimientos.pdf">Semana 03 fase requerimientos</a></li>
       </ul>
     </div>
   </details>
@@ -325,6 +404,7 @@
       <ul class="doc-list">
         <li><a class="doc-link" href="./docs/bitacoras/nicolas/Nicolas Cubillos.pdf">Semana 01 fase de iniciación</a></li>
         <li><a class="doc-link" href="./docs/bitacoras/nicolas/BitacoraTiempo[2], Nicolas Cubillos fase estrategia.pdf">Semana 02 fase estrategia</a></li>
+        <li><a class="doc-link" href="./docs/bitacoras/nicolas/BitacoraTiempo[3], Nicolas Cubillos fase requerimientos.pdf">Semana 03 fase requerimientos</a></li>
       </ul>
     </div>
   </details>
@@ -335,6 +415,7 @@
       <ul class="doc-list">
         <li><a class="doc-link" href="./docs/bitacoras/kerlon/BitacoraTiempoKerlon.pdf">Semana 01 fase de iniciación</a></li>
         <li><a class="doc-link" href="./docs/bitacoras/kerlon/BitacoraTiempodefKerlon fase estrategia.pdf">Semana 02 fase de estrategia</a></li>
+         <li><a class="doc-link" href="./docs/bitacoras/kerlon/BitacoraTiempoKerlon fase requerimientos.pdf">Semana 03 fase requerimientos</a></li>
       </ul>
     </div>
   </details>
@@ -345,6 +426,7 @@
       <ul class="doc-list">
         <li><a class="doc-link" href="./docs/bitacoras/matias/BitacoraMatias.pdf">Semana 01 fase iniciación/a></li>
          <li><a class="doc-link" href="./docs/bitacoras/matias/Bitacora_Matias_Marin fase estrategia.pdf">Semana 02 fase de estrategia</a></li>
+          <li><a class="doc-link" href="./docs/bitacoras/matias/BitacoraMatiasFaserequerimientos.pdf">Semana 03 fase requerimientos</a></li>
       </ul>
     </div>
   </details>
@@ -354,6 +436,7 @@
   <ul class="doc-list">
     <li><a class="doc-link" href="./docs/script/Script definición de procesos FASE INICIACION 2.pdf">Script — Fase de iniciación</a><span class="muted"> • versión corregida</span></li>
      <li><a class="doc-link" href="./docs/script/Script definición de procesos FASE ESTRATEGIA.pdf">Script — Fase de estrategia</a><span class="muted"> • versión inicial</span></li>
+     <li><a class="doc-link" href="./docs/script/Script definición de procesos Fase requerimientos.pdf">Script — Fase de requerimientos</a><span class="muted"> • versión inicial</span></li>
   </ul>
 </div>
 
@@ -365,6 +448,8 @@
 <li><a class="doc-link" href="./docs/importantes/dt_ptl_DefinicionEstrategiaPrint(Null).pdf">Definición de estrategia</a></li>
 <li><a class="doc-link" href="./docs/importantes/dt_ptl_plan_adminconfiguracion_Print(Null).pdf">Plan de administración de configuración</a></li>
 <li><a class="doc-link" href="./docs/importantes/dt_ptl_doc_pl_01_plan_riesgosDefinitivo.pdf">Gestión de riesgo</a></li>
+<li><a class="doc-link" href="./docs/importantes/Plan_Seguimiento_Riesgos_DashKPI.pdf">Seguimiento de riesgos</a></li>
+<li><a class="doc-link" href="./docs/importantes/Especificación de requerimientos de software.pdf">Especificación de requerimientos de software (SRS)</a></li>
    
 </ul>
 </div>
@@ -372,7 +457,7 @@
 
 <div id="tab-asignaciones" class="tab-panel" role="tabpanel" aria-labelledby="btn-asignaciones">
 <ul class="doc-list">
-<li><a class="doc-link" href="./docs/importantes/control/dt_ptl_controlAsignaciones_definitivo FASE ESTRATEGIA.xlsx">Control de asignaciones fase estrategia</a></li>
+<li><a class="doc-link" href="./docs/importantes/control/dt_ptl_controlAsignaciones_definitivo3 fase requerimientos.xlsx">Control de asignaciones</a></li>
 </ul>
 </div>
 
@@ -381,14 +466,72 @@
 <ul class="doc-list">
 <li><a class="doc-link" href="./docs/importantes/log defectos/logDefectos fase 1.pdf">Log de defectos fase iniciación</a></li>
 <li><a class="doc-link" href="./docs/importantes/log defectos/logDefectos fase 2.pdf">Log de defectos fase estrategia</a></li>
+<li><a class="doc-link" href="./docs/importantes/log defectos/logDefectos fase 3.pdf">Log de defectos fase requerimientos</a></li>
 </ul>
 </div>
+
+<div id="tab-requerimientos" class="tab-panel" role="tabpanel" aria-labelledby="btn-requerimientos">
+  <!-- Acordeones -->
+<details class="acc">
+  <summary>Casos de uso</summary>
+  <div class="inner">
+    <ul class="doc-list">
+      <li><a class="doc-link" href="./docs/requerimientos/casos de uso/DT_Ptl_DetalleCasoUso01.pdf">Gestionar autenticación multifactor (2FA)</a></li>
+      <li><a class="doc-link" href="./docs/requerimientos/casos de uso/DT_Ptl_DetalleCasoUso_SantiagoHerrada2.pdf">Gestionar roles y permisos</a></li>
+      <li><a class="doc-link" href="./docs/requerimientos/casos de uso/DT_Ptl_DetalleCasoUso_SantiagoHerrada3.pdf">Crear proyecto</a></li>
+      <li><a class="doc-link" href="./docs/requerimientos/casos de uso/DT_Ptl_DetalleCasoUso_SantiagoHerrada4.pdf">Planificar sprint / iteración</a></li>
+      <li><a class="doc-link" href="./docs/requerimientos/casos de uso/DT_Ptl_DetalleCasoUso05.pdf">Gestionar backlog (historias/tareas)</a></li>
+      <li><a class="doc-link" href="./docs/requerimientos/casos de uso/DT_Ptl_DetalleCasoUso6.pdf">Registrar tiempo y avance</a></li>
+      <li><a class="doc-link" href="./docs/requerimientos/casos de uso/DT_Ptl_DetalleCasoUso7.pdf">Configurar y calcular KPIs</a></li>
+      <li><a class="doc-link" href="./docs/requerimientos/casos de uso/Caso_uso_8.pdf">Visualizar dashboard (proyecto/portafolio)</a></li>
+      <li><a class="doc-link" href="./docs/requerimientos/casos de uso/Caso_uso_9.pdf">Generar reportes y exportaciones</a></li>
+      <li><a class="doc-link" href="./docs/requerimientos/casos de uso/Caso_uso_10.pdf">Registrar y gestionar riesgos</a></li>
+      <li><a class="doc-link" href="./docs/requerimientos/casos de uso/DT_Ptl_DetalleCasoUso11.pdf">Log de defectos (apertura, seguimiento y cierre)</a></li>
+      <li><a class="doc-link" href="./docs/requerimientos/casos de uso/DT_Ptl_DetalleCasoUso12.pdf">Bitácoras y actas</a></li>
+      <li><a class="doc-link" href="./docs/requerimientos/casos de uso/DT_Ptl_DetalleCasoUso13.pdf">Aprobación de cambios (control de configuración)</a></li>
+      <li><a class="doc-link" href="./docs/requerimientos/casos de uso/DT_Ptl_DetalleCasoUso014.pdf">Notificaciones y alertas</a></li>
+      <li><a class="doc-link" href="./docs/requerimientos/casos de uso/DT_Ptl_DetalleCasoUso015.pdf">Integración con repositorios (GitHub/GitLab)</a></li>
+      <li><a class="doc-link" href="./docs/requerimientos/casos de uso/DT_Ptl_DetalleCasoUso16.pdf">Gestión de usuarios y equipo del proyecto</a></li>
+      <li><a class="doc-link" href="./docs/requerimientos/casos de uso/DT_Ptl_DetalleCasoUso17.pdf">Maestro de documentos del proyecto</a></li>
+      <li><a class="doc-link" href="./docs/requerimientos/casos de uso/DT_Ptl_DetalleCasoUso18.pdf">Cerrar proyecto</a></li>
+    </ul>
+  </div>
+</details>
+
+
+  <details class="acc">
+    <summary>Atributos de calidad</summary>
+    <div class="inner">
+      <ul class="doc-list">
+        <li><a class="doc-link" href="./docs/requerimientos/atributos de calidad/DT_Ptl_EscenarioCalidadSeguridad.pdf">Escenarios — Seguridad</a></li>
+        <li><a class="doc-link" href="./docs/requerimientos/atributos de calidad/DT_Ptl_EscenarioCalidad_Desempeño.pdf">Escenarios — Desempeño</a></li>
+        <li><a class="doc-link" href="./docs/requerimientos/atributos de calidad/DT_Ptl_EscenarioCalidadEscalabilidad.pdf">Escenarios — Escalabilidad</a></li>
+        <li><a class="doc-link" href="./docs/requerimientos/atributos de calidad/DT_Ptl_EscenarioCalidadUsabilidad.pdf">Escenarios — Usabilidad</a></li>
+        <li><a class="doc-link" href="./docs/requerimientos/atributos de calidad/EscenarioCalidadDisponibilidad.pdf">Escenarios — Disponibilidad</a></li>
+        <li><a class="doc-link" href="./docs/requerimientos/atributos de calidad/DT_Ptl_EscenarioCalidadExtensibilidad.pdf">Escenarios — Extensibilidad</a></li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- Directos -->
+
+  <ul class="doc-list">
+    <li><a class="doc-link" href="./docs/requerimientos/modelo/modelo de dominio .pdf">Modelo de dominio</a></li>
+  </ul>
+
+  <ul class="doc-list">
+    <li><a class="doc-link" href="./docs/requerimientos/modelo/modelo de casos de uso .pdf">Modelo de casos de uso</a></li>
+  </ul>
+</div>
+
+
 
 
 <div id="tab-informe" class="tab-panel" role="tabpanel" aria-labelledby="btn-informe">
 <ul class="doc-list">
 <li><a class="doc-link" href="./docs/importantes/informes/Informe Final fase 1.pdf">Informe final fase de iniciación</a></li>
 <li><a class="doc-link" href="./docs/importantes/informes/Informe Final fase 2.pdf">Informe final fase de estrategia</a></li>
+<li><a class="doc-link" href="./docs/importantes/informes/Informe Final fase 3.pdf">Informe final fase de requerimientos</a></li>
 </ul>
 </div>
 
@@ -405,6 +548,9 @@
     <li><a href="./docs/formatos/DefinicionEstrategia.docx" target="_blank" rel="noopener">Formato: Definición de estrategia</a></li>
     <li><a href="./docs/formatos/PlanRiesgo.docx" target="_blank" rel="noopener">Formato: Plan de riesgo</a></li>
     <li><a href="./docs/formatos/PlanAdministracionConfiguracion.docx" target="_blank" rel="noopener">Formato: Plan de administración de configuración</a></li>
+    <li><a href="./docs/formatos/DT_Ptl_DetalleCasoUso.docx" target="_blank" rel="noopener">Formato: Especificacion de casos de uso</a></li>
+    <li><a href="./docs/formatos/DT_Ptl_EscenarioCalidad.docx" target="_blank" rel="noopener">Formato: Especificacion de Atributos de calidad</a></li>
+     <li><a href="./docs/formatos/Plan_Seguimiento_Riesgos_DashKPI_Empty_.docx" target="_blank" rel="noopener">Formato: Seguimiento de plan de riesgos</a></li>
   </ul>
 </div> 
 <!-- fin paneles -->
@@ -530,6 +676,61 @@
 </section>
 
 
+<!-- === CHECKLIST === -->
+<section id="checklist" class="checklist">
+  <div class="container">
+    <h2 style="margin:0 0 10px">Checklist del proyecto</h2>
+    <p class="muted" style="margin:0 0 18px">Organiza y verifica entregables por fase. Se guarda automáticamente en este navegador.</p>
+
+    <div class="check-head">
+      <div class="phase-tabs" role="tablist" aria-label="Fases del proyecto">
+        <button class="phase-btn active" data-phase="iniciacion" aria-selected="true">Fase 1 — Iniciación</button>
+        <button class="phase-btn" data-phase="estrategia" aria-selected="false">Fase 2 — Estrategia</button>
+        <button class="phase-btn" data-phase="construccion" aria-selected="false">Fase 3 — Requerimientos</button>
+        <button class="phase-btn" data-phase="planeacion" aria-selected="false">Fase 4 — Planeación</button>
+
+      </div>
+
+      <div class="check-controls">
+        <select id="checkFilter" class="filter-select" aria-label="Filtro de tareas">
+          <option value="all">Mostrar: Todas</option>
+          <option value="todo">Pendientes</option>
+          <option value="done">Hechas</option>
+        </select>
+        <button id="btnExport" class="icon-btn" title="Exportar JSON">⬇️ Exportar</button>
+        <label for="fileImport" class="icon-btn" title="Importar JSON" style="cursor:pointer">⬆️ Importar</label>
+        <input id="fileImport" type="file" accept="application/json" style="display:none">
+        <button id="btnClearDone" class="icon-btn icon-danger" title="Eliminar hechas">🗑️ Limpiar hechas</button>
+      </div>
+    </div>
+
+    <div class="check-card">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:10px">
+        <strong id="phaseTitle">Fase 1 — Iniciación</strong>
+        <small class="muted"><span id="statsCount">0</span> tareas • <span id="statsDone">0</span> hechas</small>
+      </div>
+      <div class="checkbar" aria-hidden="true"><span id="progressBar" style="width:0%"></span></div>
+
+      <div id="taskList" style="margin-top:12px"></div>
+
+      <form id="addForm" class="add-form" autocomplete="off">
+        <input type="text" id="newTitle" placeholder="Nueva tarea… p. ej. ‘Ajustar log de defectos F1’" required />
+        <select id="newOwner" title="Responsable">
+          <option value="">— Responsable —</option>
+          <option>Leidy</option>
+          <option>Santiago</option>
+          <option>Esteban</option>
+          <option>Nicolás</option>
+          <option>Kerlon</option>
+          <option>Matías</option>
+          <option>Todos</option>
+        </select>
+        <button class="btn primary" type="submit">Agregar</button>
+      </form>
+    </div>
+  </div>
+</section>
+
     <!-- Contacto -->
     <section id="contacto">
       <div class="container">
@@ -555,6 +756,9 @@
       <small>© <span id="y"></span> print(Null). Todos los derechos reservados.</small>
     </div>
   </footer>
+
+
+
 <script>
   // Año dinámico
   document.getElementById('y').textContent = new Date().getFullYear();
@@ -712,7 +916,215 @@
       if(first){ setPreview(first.getAttribute('href'), first.textContent.trim()); }
     }
   };
+/* === CHECKLIST (localStorage) === */
+(function(){
+  const STORAGE_KEY = 'printnull.checklist.v1';
+  const $ = (sel, root=document) => root.querySelector(sel);
+  const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+  // Utils
+  function cuid(){ return 't_' + Math.random().toString(36).slice(2,10) + Date.now().toString(36).slice(-4); }
+  function load(){
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return structuredClone(DEFAULT_DATA);
+      const data = JSON.parse(raw);
+      // saneo mínimo
+      if(!data.tasks) data.tasks = structuredClone(DEFAULT_DATA.tasks);
+      if(!data.phase) data.phase = 'iniciacion';
+      return data;
+    }catch{ return structuredClone(DEFAULT_DATA); }
+  }
+  function save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+
+  // Estado
+  let state = load();
+  let filter = 'all'; // all | todo | done
+
+  // Nodos
+  const phaseButtons = $$('.phase-btn');
+  const phaseTitle = $('#phaseTitle');
+  const statsCount = $('#statsCount');
+  const statsDone = $('#statsDone');
+  const progressBar = $('#progressBar');
+  const taskList = $('#taskList');
+  const addForm = $('#addForm');
+  const newTitle = $('#newTitle');
+  const newOwner = $('#newOwner');
+  const filterSel = $('#checkFilter');
+  const btnExport = $('#btnExport');
+  const fileImport = $('#fileImport');
+  const btnClearDone = $('#btnClearDone');
+
+  // Cambiar entre fases
+  phaseButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      phaseButtons.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      state.phase = btn.dataset.phase;
+      save(); render();
+    });
+  });
+
+  // Filtro
+  filterSel.addEventListener('change', () => {
+    filter = filterSel.value;
+    render();
+  });
+
+  // Agregar tarea
+  addForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const title = newTitle.value.trim();
+    if(!title) return;
+    const owner = (newOwner.value || '').trim();
+    const t = { id:cuid(), title, owner, done:false };
+    state.tasks[state.phase].unshift(t);
+    save();
+    newTitle.value = '';
+    newOwner.value = '';
+    render();
+  });
+
+  // Exportar JSON
+  btnExport.addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; 
+    a.download = `checklist_${new Date().toISOString().slice(0,10)}.json`;
+    document.body.appendChild(a); 
+    a.click(); 
+    a.remove();
+    URL.revokeObjectURL(url);
+  });
+
+  // Importar JSON
+  fileImport.addEventListener('change', async () => {
+    const file = fileImport.files?.[0];
+    if (!file) return;
+    const text = await file.text();
+    try {
+      const data = JSON.parse(text);
+      // Validación ligera
+      if(!data.tasks || !data.tasks.iniciacion || !data.tasks.estrategia || !data.tasks.construccion || !data.tasks.planeacion){
+        alert('Archivo inválido: faltan fases.');
+        return;
+      }
+      state = data;
+      save(); render();
+      fileImport.value = '';
+    } catch (err) {
+      console.error(err);
+      alert('No se pudo importar el JSON.');
+    }
+  });
+
+  // Limpiar tareas hechas
+  btnClearDone.addEventListener('click', () => {
+    const list = state.tasks[state.phase];
+    const remain = list.filter(t => !t.done);
+    if(remain.length === list.length){
+      alert('No hay tareas hechas para limpiar.');
+      return;
+    }
+    if (confirm('¿Eliminar todas las tareas marcadas como hechas en esta fase?')) {
+      state.tasks[state.phase] = remain;
+      save(); render();
+    }
+  });
+
+  // Operaciones por ítem
+  function toggle(id){
+    const arr = state.tasks[state.phase];
+    const t = arr.find(x => x.id === id);
+    if (!t) return;
+    t.done = !t.done;
+    save();
+    render();
+  }
+
+  function remove(id){
+    const arr = state.tasks[state.phase];
+    state.tasks[state.phase] = arr.filter(x => x.id !== id);
+    save();
+    render();
+  }
+
+  function draftHTML(t) {
+    const hidden = (filter === 'todo' && t.done) || (filter === 'done' && !t.done);
+    if (hidden) return '';
+    const owner = t.owner ? ` • <span>${t.owner}</span>` : '';
+    return `
+      <div class="check-row" data-id="${t.id}">
+        <input type="checkbox" ${t.done ? 'checked' : ''} aria-label="Marcar tarea">
+        <div>
+          <div class="check-title ${t.done ? 'done' : ''}">${escapeHTML(t.title)}</div>
+          <div class="check-meta">ID: ${t.id}${owner}</div>
+        </div>
+        <div class="check-actions">
+          <button class="icon-btn" data-act="toggle">${t.done ? '↩️ Desmarcar' : '✔️ Hecha'}</button>
+          <button class="icon-btn icon-danger" data-act="remove">🗑️ Borrar</button>
+        </div>
+      </div>
+    `;
+  }
+
+  function escapeHTML(s) {
+    return s.replace(/[&<>"']/g, m => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;',
+    })[m]);
+  }
+
+  function render() {
+    // Título fase
+    const mapTitle = {
+      iniciacion: 'Fase 1 — Iniciación',
+      estrategia: 'Fase 2 — Estrategia',
+      construccion: 'Fase 3 — Requerimientos',
+      planeacion: 'Fase 4 — Planeación', // Nueva fase
+    };
+    phaseTitle.textContent = mapTitle[state.phase] || 'Checklist';
+
+    // Lista de tareas
+    const list = state.tasks[state.phase] || [];
+    const html = list.map(draftHTML).join('') || `<p class="muted" style="margin:10px 0 0">No hay tareas aún.</p>`;
+    taskList.innerHTML = html;
+
+    // Delegación de eventos en la lista
+    $$('#taskList .check-row').forEach(row => {
+      const id = row.dataset.id;
+      const cb = $('input[type="checkbox"]', row);
+      cb.addEventListener('change', () => toggle(id));
+      const btnToggle = $('[data-act="toggle"]', row);
+      const btnRemove = $('[data-act="remove"]', row);
+      btnToggle.addEventListener('click', () => toggle(id));
+      btnRemove.addEventListener('click', () => remove(id));
+    });
+
+    // Estadísticas de progreso
+    const total = list.length;
+    const done = list.filter(x => x.done).length;
+    statsCount.textContent = total;
+    statsDone.textContent = done;
+    const pct = total ? Math.round(done * 100 / total) : 0;
+    progressBar.style.width = pct + '%';
+    progressBar.parentElement.setAttribute('aria-label', `Progreso: ${pct}%`);
+  }
+
+  // Arranque inicial
+  render();
+})();
+
+
+
 </script>
+
 
 
 
