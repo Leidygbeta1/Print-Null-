@@ -922,6 +922,17 @@
   const $ = (sel, root=document) => root.querySelector(sel);
   const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
 
+    const DEFAULT_DATA = {
+    phase: 'iniciacion',
+    tasks: {
+      iniciacion: [],
+      estrategia: [],
+      construccion: [],
+      planeacion: []
+    }
+  };
+
+
   // Utils
   function cuid(){ return 't_' + Math.random().toString(36).slice(2,10) + Date.now().toString(36).slice(-4); }
   function load(){
