@@ -1,0 +1,192 @@
+{
+  "phase": "construccion",
+  "tasks": {
+    "iniciacion": [
+      {
+        "id": "t_1mzpge82338x",
+        "title": "Acta de iniciación (DT_Ini_01)",
+        "owner": "Leidy",
+        "done": true
+      },
+      {
+        "id": "t_v9pfg8c4338x",
+        "title": "Maestro de documentos (fase 1)",
+        "owner": "Santiago",
+        "done": true
+      },
+      {
+        "id": "t_mg6gzwnh338x",
+        "title": "Bitácoras Semana 01 (todos)",
+        "owner": "Equipo",
+        "done": true
+      },
+      {
+        "id": "t_h6p3tb9j338x",
+        "title": "Informe final fase 1",
+        "owner": "Esteban",
+        "done": true
+      },
+      {
+        "id": "t_nbd9z9fd338x",
+        "title": "Log de defectos fase 1",
+        "owner": "Matías",
+        "done": true
+      }
+    ],
+    "estrategia": [
+      {
+        "id": "t_926gpkxs338x",
+        "title": "Definición de estrategia (dt_ptl_DefinicionEstrategia)",
+        "owner": "Leidy",
+        "done": true
+      },
+      {
+        "id": "t_q2ygz1ku338x",
+        "title": "Plan de administración de configuración",
+        "owner": "Kerlon",
+        "done": true
+      },
+      {
+        "id": "t_51wk9kui338x",
+        "title": "Gestión de riesgos (plan + matriz)",
+        "owner": "Santiago",
+        "done": true
+      },
+      {
+        "id": "t_ikp0vhbj338x",
+        "title": "Control de asignaciones (fase estrategia)",
+        "owner": "Nicolás",
+        "done": true
+      },
+      {
+        "id": "t_ej1np9ja338x",
+        "title": "Informe final fase 2",
+        "owner": "Esteban",
+        "done": true
+      },
+      {
+        "id": "t_i924pvxe338x",
+        "title": "Log de defectos fase 2",
+        "owner": "Matías",
+        "done": true
+      },
+      {
+        "id": "t_vp2cqf5g338x",
+        "title": "Bitácoras Semana 02 (todos)",
+        "owner": "Equipo",
+        "done": true
+      },
+      {
+        "id": "t_dqjb2ttx338x",
+        "title": "Script definición de procesos — Fase estrategia",
+        "owner": "Matías",
+        "done": true
+      }
+    ],
+    "construccion": [
+      {
+        "id": "t_j00biikx6t0s",
+        "title": "Documento SRS",
+        "owner": "Leidy",
+        "done": true
+      },
+      {
+        "id": "t_ljl6qh8pk0r7",
+        "title": "Log de defectos",
+        "owner": "Todos",
+        "done": true
+      },
+      {
+        "id": "t_j6dfnw88jgqa",
+        "title": "Acta de reunión",
+        "owner": "Esteban",
+        "done": true
+      },
+      {
+        "id": "t_8j7m8h38j526",
+        "title": "maestro documentos",
+        "owner": "Leidy",
+        "done": true
+      },
+      {
+        "id": "t_2tz6gcyyiv7b",
+        "title": "informe final",
+        "owner": "Leidy",
+        "done": true
+      },
+      {
+        "id": "t_s4wj04axipqs",
+        "title": "bitacoras",
+        "owner": "Todos",
+        "done": true
+      },
+      {
+        "id": "t_5sd4i9xfiba1",
+        "title": "Control de asignaciones",
+        "owner": "Santiago",
+        "done": true
+      },
+      {
+        "id": "t_xrb79zb8i4lm",
+        "title": "Script fase requerimientos",
+        "owner": "Todos",
+        "done": true
+      },
+      {
+        "id": "t_gc80a9tbhr2c",
+        "title": "Modelo de dominio",
+        "owner": "Kerlon",
+        "done": true
+      },
+      {
+        "id": "t_lgeklxwhhlrm",
+        "title": "Modelo de casos de uso",
+        "owner": "Todos",
+        "done": true
+      },
+      {
+        "id": "t_qn0vwauuh94f",
+        "title": "Atributo de calidad Extensibilidad",
+        "owner": "Kerlon",
+        "done": true
+      },
+      {
+        "id": "t_yf3rcox5h0dl",
+        "title": "Atributo de calidad Seguridad",
+        "owner": "Matías",
+        "done": true
+      },
+      {
+        "id": "t_3ehholmdgo7y",
+        "title": "Atributo de calidad Usabilidad",
+        "owner": "Leidy",
+        "done": true
+      },
+      {
+        "id": "t_hclo594cggau",
+        "title": "Atributo de calidad Disponibilidad",
+        "owner": "Esteban",
+        "done": true
+      },
+      {
+        "id": "t_bzvvladwg5fx",
+        "title": "Atributo de calidad Escalabilidad",
+        "owner": "Nicolás",
+        "done": true
+      },
+      {
+        "id": "t_knmm1utefvmt",
+        "title": "Atributos de calidad Desempeño",
+        "owner": "Santiago",
+        "done": true
+      },
+      {
+        "id": "t_p3fgvo3p9mqz",
+        "title": "18 Casos de uso",
+        "owner": "Todos",
+        "done": true
+      }
+    ],
+    "planeacion": []
+  }
+}
