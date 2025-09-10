@@ -1,0 +1,314 @@
+{
+  "phase": "planeacion",
+  "tasks": {
+    "iniciacion": [
+      {
+        "id": "t_1mzpge82338x",
+        "title": "Acta de iniciación (DT_Ini_01)",
+        "owner": "Leidy",
+        "done": true,
+        "comments": []
+      },
+      {
+        "id": "t_v9pfg8c4338x",
+        "title": "Maestro de documentos (fase 1)",
+        "owner": "Santiago",
+        "done": true,
+        "comments": []
+      },
+      {
+        "id": "t_mg6gzwnh338x",
+        "title": "Bitácoras Semana 01 (todos)",
+        "owner": "Equipo",
+        "done": true,
+        "comments": []
+      },
+      {
+        "id": "t_h6p3tb9j338x",
+        "title": "Informe final fase 1",
+        "owner": "Esteban",
+        "done": true,
+        "comments": []
+      },
+      {
+        "id": "t_nbd9z9fd338x",
+        "title": "Log de defectos fase 1",
+        "owner": "Matías",
+        "done": true,
+        "comments": []
+      }
+    ],
+    "estrategia": [
+      {
+        "id": "t_926gpkxs338x",
+        "title": "Definición de estrategia (dt_ptl_DefinicionEstrategia)",
+        "owner": "Leidy",
+        "done": true,
+        "comments": []
+      },
+      {
+        "id": "t_q2ygz1ku338x",
+        "title": "Plan de administración de configuración",
+        "owner": "Kerlon",
+        "done": true,
+        "comments": []
+      },
+      {
+        "id": "t_51wk9kui338x",
+        "title": "Gestión de riesgos (plan + matriz)",
+        "owner": "Santiago",
+        "done": true,
+        "comments": []
+      },
+      {
+        "id": "t_ikp0vhbj338x",
+        "title": "Control de asignaciones (fase estrategia)",
+        "owner": "Nicolás",
+        "done": true,
+        "comments": []
+      },
+      {
+        "id": "t_ej1np9ja338x",
+        "title": "Informe final fase 2",
+        "owner": "Esteban",
+        "done": true,
+        "comments": []
+      },
+      {
+        "id": "t_i924pvxe338x",
+        "title": "Log de defectos fase 2",
+        "owner": "Matías",
+        "done": true,
+        "comments": []
+      },
+      {
+        "id": "t_vp2cqf5g338x",
+        "title": "Bitácoras Semana 02 (todos)",
+        "owner": "Equipo",
+        "done": true,
+        "comments": []
+      },
+      {
+        "id": "t_dqjb2ttx338x",
+        "title": "Script definición de procesos — Fase estrategia",
+        "owner": "Matías",
+        "done": true,
+        "comments": []
+      }
+    ],
+    "construccion": [
+      {
+        "id": "t_j00biikx6t0s",
+        "title": "Documento SRS",
+        "owner": "Leidy",
+        "done": true,
+        "comments": [
+          {
+            "id": "t_s7gudrdi9dyd",
+            "author": "leidy",
+            "text": "se reviso si el documento srs cumplia los estandares de requerimientos",
+            "date": "2025-09-09 12:42"
+          }
+        ]
+      },
+      {
+        "id": "t_s4wj04axipqs",
+        "title": "bitacoras",
+        "owner": "Todos",
+        "done": true,
+        "comments": [
+          {
+            "id": "t_j7l2f5xm8iks",
+            "author": "leidy",
+            "text": "mande mi bitacora a tiempo y se reviso para ver si cumplia el control de asignacion",
+            "date": "2025-09-09 12:42"
+          }
+        ]
+      },
+      {
+        "id": "t_gc80a9tbhr2c",
+        "title": "Modelo de dominio",
+        "owner": "Kerlon",
+        "done": true,
+        "comments": [
+          {
+            "id": "t_gwuo0fwi7odt",
+            "author": "leidy",
+            "text": "se corrigio, para mejorar el entendimiento del uml",
+            "date": "2025-09-09 12:41"
+          }
+        ]
+      },
+      {
+        "id": "t_lgeklxwhhlrm",
+        "title": "Modelo de casos de uso",
+        "owner": "Todos",
+        "done": true,
+        "comments": [
+          {
+            "id": "t_hrw92wby70ir",
+            "author": "leidy",
+            "text": "se actualizo segun los casos corregidos y se reviso en grupo",
+            "date": "2025-09-09 12:40"
+          }
+        ]
+      },
+      {
+        "id": "t_qn0vwauuh94f",
+        "title": "Atributo de calidad Extensibilidad",
+        "owner": "Kerlon",
+        "done": true,
+        "comments": [
+          {
+            "id": "t_5owr3z5i6jsd",
+            "author": "leidy",
+            "text": "se reviso el documento, toco corregirlo porque abarcaba muchos temas pero se soluciono y cumple con el escenario",
+            "date": "2025-09-09 12:40"
+          }
+        ]
+      },
+      {
+        "id": "t_yf3rcox5h0dl",
+        "title": "Atributo de calidad Seguridad",
+        "owner": "Matías",
+        "done": true,
+        "comments": [
+          {
+            "id": "t_yv9fv0hv6dau",
+            "author": "leidy",
+            "text": "se reviso el documento, toco corregirlo porque abarcaba muchos temas pero se soluciono y cumple con el escenario",
+            "date": "2025-09-09 12:40"
+          }
+        ]
+      },
+      {
+        "id": "t_3ehholmdgo7y",
+        "title": "Atributo de calidad Usabilidad",
+        "owner": "Leidy",
+        "done": true,
+        "comments": [
+          {
+            "id": "t_6m9v97sd5tve",
+            "author": "leidy",
+            "text": "se reviso el documento para ver si cumplia con la calidad requerida",
+            "date": "2025-09-09 12:39"
+          }
+        ]
+      },
+      {
+        "id": "t_hclo594cggau",
+        "title": "Atributo de calidad Disponibilidad",
+        "owner": "Esteban",
+        "done": true,
+        "comments": [
+          {
+            "id": "t_tqgzivqu5qtg",
+            "author": "leidy",
+            "text": "se reviso el documento para ver si cumplia con la calidad requerida",
+            "date": "2025-09-09 12:39"
+          }
+        ]
+      },
+      {
+        "id": "t_bzvvladwg5fx",
+        "title": "Atributo de calidad Escalabilidad",
+        "owner": "Nicolás",
+        "done": true,
+        "comments": [
+          {
+            "id": "t_6ee46ta85nu7",
+            "author": "leidy",
+            "text": "se reviso el documento para ver si cumplia con la calidad requerida",
+            "date": "2025-09-09 12:39"
+          }
+        ]
+      },
+      {
+        "id": "t_knmm1utefvmt",
+        "title": "Atributos de calidad Desempeño",
+        "owner": "Santiago",
+        "done": true,
+        "comments": [
+          {
+            "id": "t_2rv8d94o5jek",
+            "author": "leidy",
+            "text": "se reviso el documento para ver si cumplia con la calidad requerida",
+            "date": "2025-09-09 12:39"
+          }
+        ]
+      },
+      {
+        "id": "t_p3fgvo3p9mqz",
+        "title": "18 Casos de uso",
+        "owner": "Todos",
+        "done": true,
+        "comments": [
+          {
+            "id": "t_5whe9sdy54s8",
+            "author": "leidy",
+            "text": "se corrigio los casos y esta todo funcional",
+            "date": "2025-09-09 12:39"
+          }
+        ]
+      }
+    ],
+    "planeacion": [
+      {
+        "id": "t_yv5p129rzb2v",
+        "title": "bitacoras",
+        "owner": "Todos",
+        "done": false,
+        "comments": [
+          {
+            "id": "t_smgbt7jj4jae",
+            "author": "leidy",
+            "text": "mande mi bitacora a tiempo y esta igual al control de asignacion",
+            "date": "2025-09-09 12:38"
+          }
+        ]
+      },
+      {
+        "id": "t_ys7rn199yybz",
+        "title": "Plan de admin requerimientos",
+        "owner": "Esteban",
+        "done": false,
+        "comments": [
+          {
+            "id": "t_j0m21m9f40dn",
+            "author": "leidy",
+            "text": "se reviso el plan de admin, donde se incluye el check listo de los casos de uso",
+            "date": "2025-09-09 12:38"
+          }
+        ]
+      },
+      {
+        "id": "t_nc94w165yo2k",
+        "title": "EDT",
+        "owner": "Santiago",
+        "done": false,
+        "comments": [
+          {
+            "id": "t_lvgbo0cf3c01",
+            "author": "leidy",
+            "text": "Se reviso el EDT, ya esta completo con su parte estadistica y se visualiza los las tareas totales de las fases",
+            "date": "2025-09-09 12:38"
+          }
+        ]
+      },
+      {
+        "id": "t_dphbv272ykgw",
+        "title": "Plan de calidad",
+        "owner": "Leidy",
+        "done": false,
+        "comments": [
+          {
+            "id": "t_qq6fc03c238j",
+            "author": "leidy",
+            "text": "se reviso el plan de calidad, se modifico los errores que tenia ya que faltaban las metricas de cada integrante, pero se soluciono",
+            "date": "2025-09-09 12:37"
+          }
+        ]
+      }
+    ]
+  }
+}
