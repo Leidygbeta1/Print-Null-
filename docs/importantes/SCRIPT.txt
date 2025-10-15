@@ -1,0 +1,31 @@
+INSERT INTO dbo.proyectos (nombre, descripcion, fecha_inicio, fecha_fin, id_pm) VALUES
+('Sistema de Ventas', 'Desarrollo de un sistema para gestión de ventas', '2025-10-10', '2025-12-15', 4),
+('App Móvil Salud', 'Aplicación móvil para monitoreo de salud', '2025-10-11', '2026-01-10', 5),
+('Migración Cloud', 'Migrar infraestructura a la nube', '2025-10-12', '2025-11-30', 6),
+('Optimización Procesos', 'Mejorar procesos internos de la empresa', '2025-10-13', '2025-12-01', 7),
+('Automatización Reportes', 'Automatizar generación de reportes', '2025-10-14', '2025-12-20', 8),
+('Integración APIs', 'Integrar APIs de terceros', '2025-10-15', '2025-11-25', 3),
+('Análisis de Datos', 'Proyecto de análisis avanzado de datos', '2025-10-16', '2025-12-31', 4);
+
+INSERT INTO dbo.tareas (id_proyecto, id_usuario_asignado, titulo, descripcion, fecha_vencimiento, prioridad, progreso, estado) VALUES
+(4, 2, 'Diseño UI', 'Diseñar la interfaz de usuario principal', '2025-10-20', 'Alta', 0, 'Pendiente'),
+(5, 3, 'Desarrollo Backend', 'Implementar lógica de negocio', '2025-10-25', 'Media', 20, 'En progreso'),
+(6, 4, 'Migrar Base de Datos', 'Migrar datos a la nube', '2025-10-30', 'Alta', 0, 'Pendiente'),
+(7, 5, 'Documentación', 'Crear manual de usuario', '2025-11-05', 'Baja', 100, 'Completada'),
+(8, 6, 'Automatizar ETL', 'Automatizar procesos ETL', '2025-11-10', 'Media', 50, 'En progreso'),
+(9, 7, 'Pruebas Integración', 'Realizar pruebas de integración', '2025-11-15', 'Alta', 0, 'Pendiente'),
+(4, 3, 'Dashboard KPIs', 'Desarrollar dashboard de KPIs', '2025-11-20', 'Media', 30, 'En progreso'),
+(5, 4, 'Configurar Servidores', 'Configurar servidores de producción', '2025-11-25', 'Alta', 0, 'Pendiente'),
+(6, 5, 'Capacitación', 'Capacitar equipo en nuevas herramientas', '2025-11-30', 'Baja', 100, 'Completada'),
+(7, 6, 'Revisión Final', 'Revisión de cumplimiento de auditoría', '2025-12-01', 'Media', 0, 'Pendiente');
+
+INSERT INTO dbo.kpis (id_proyecto, nombre, descripcion, tipo, valor_objetivo, valor_actual) VALUES
+(4, 'Ventas mensuales', 'Monto de ventas mensuales', 'Financiero', 100000, 75000),
+(5, 'Usuarios activos', 'Cantidad de usuarios activos en la app', 'Cliente', 5000, 3200),
+(6, 'Tiempo de respuesta', 'Tiempo promedio de respuesta del sistema', 'Operacional', 1.0, 1.5),
+(7, 'Errores críticos', 'Cantidad de errores críticos detectados', 'Operacional', 0, 2),
+(4, 'Tareas completadas', 'Porcentaje de tareas completadas', 'Operacional', 100, 85),
+(5, 'Integraciones exitosas', 'Número de integraciones exitosas', 'Operacional', 10, 7),
+(6, 'Reportes generados', 'Cantidad de reportes generados', 'Marketing', 200, 120),
+(7, 'Disponibilidad', 'Porcentaje de disponibilidad del sistema', 'Operacional', 99.9, 99.5),
+(4, 'Personal capacitado', 'Número de personas capacitadas', 'Cliente', 20, 15);
