@@ -393,7 +393,8 @@
             <p class="muted" style="max-width:60ch">Panel de control para monitorear métricas clave del negocio en tiempo real: rendimiento, disponibilidad y tendencias. Incluye histórico, alertas y exportación.</p>
           </div>
           <div style="display:flex;gap:10px">
-            <button class="btn" onclick="openProjectModal()">Ver documentos</button>
+            <button class="btn" onclick="openProjectModalCycle(1)">Ciclo 1</button>
+            <button class="btn" onclick="openProjectModalCycle(2)">Ciclo 2</button>
           </div>
         </div>
       </div>
@@ -407,8 +408,20 @@
           <button class="btn" onclick="closeProjectModal()" aria-label="Cerrar">Cerrar</button>
         </div>
 
-        <!-- Tabs -->
-<div class="tabs" role="tablist" aria-label="Secciones del proyecto">
+  <!-- Selector de Ciclo 2 (oculto por defecto) -->
+<div class="tabs ciclo2" role="tablist" aria-label="Secciones del proyecto — Ciclo 2" style="display:none">
+  <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-c2-bitacoras" id="btn-c2-bitacoras" onclick="switchTab('c2-bitacoras')">Bitácoras</button>
+  <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-c2-script" id="btn-c2-script" onclick="switchTab('c2-script')">Script</button>
+  <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-c2-defectos" id="btn-c2-defectos" onclick="switchTab('c2-defectos')">Log de defectos</button>
+  <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-c2-importantes" id="btn-c2-importantes" onclick="switchTab('c2-importantes')">Importantes</button>
+  <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-c2-inicio-estrategia" id="btn-c2-inicio-estrategia" onclick="switchTab('c2-inicio-estrategia')">Inicio y estrategia</button>
+  <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-c2-requerimientos-planeacion" id="btn-c2-requerimientos-planeacion" onclick="switchTab('c2-requerimientos-planeacion')">requerimientos y planeacion</button>
+  <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-c2-informe" id="btn-c2-informe" onclick="switchTab('c2-informe')">Informe final</button>
+  <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-c2-formatos" id="btn-c2-formatos" onclick="switchTab('c2-formatos')">Formatos elaborados</button>
+</div>
+
+  <!-- Tabs Ciclo 1 -->
+<div class="tabs ciclo1" role="tablist" aria-label="Secciones del proyecto">
   <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-bitacoras" id="btn-bitacoras" onclick="switchTab('bitacoras')">Bitácoras</button>
 <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-script" id="btn-script" onclick="switchTab('script')">Script</button>
 <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-importantes" id="btn-importantes" onclick="switchTab('importantes')">Documentos importantes</button>
@@ -438,7 +451,7 @@
 </div>
 
 <!-- Paneles -->
-<div id="tab-bitacoras" class="tab-panel open" role="tabpanel" aria-labelledby="btn-bitacoras">
+<div id="tab-bitacoras" class="tab-panel ciclo1 open" role="tabpanel" aria-labelledby="btn-bitacoras">
   <!-- Un acordeón por persona. Dentro puedes agregar N archivos.  -->
   <details class="acc">
     <summary>Bitácoras — Leidy Giraldo</summary>
@@ -537,7 +550,7 @@
   </details>
 </div>
 
-<div id="tab-script" class="tab-panel" role="tabpanel" aria-labelledby="btn-script">
+<div id="tab-script" class="tab-panel ciclo1" role="tabpanel" aria-labelledby="btn-script">
   <ul class="doc-list">
     <li><a class="doc-link" href="./docs/script/Script definición de procesos FASE INICIACION 2.pdf">Script — Fase de iniciación</a><span class="muted"> • versión corregida</span></li>
      <li><a class="doc-link" href="./docs/script/Script definición de procesos FASE ESTRATEGIA.pdf">Script — Fase de estrategia</a><span class="muted"> • versión inicial</span></li>
@@ -550,7 +563,7 @@
   </ul>
 </div>
 
-<div id="tab-importantes" class="tab-panel" role="tabpanel" aria-labelledby="btn-importantes">
+<div id="tab-importantes" class="tab-panel ciclo1" role="tabpanel" aria-labelledby="btn-importantes">
 <ul class="doc-list">
 <li><a class="doc-link" href="./docs/importantes/DT_Ini_01_ActaIniciacion_PRINT(NULL) 2.pdf">Acta de iniciación</a></li>
 <li><a class="doc-link" href="./docs/importantes/Maestro de documentos fase 1.xlsx">Maestro de documentos</a></li>
@@ -571,14 +584,14 @@
 </div>
 
 
-<div id="tab-asignaciones" class="tab-panel" role="tabpanel" aria-labelledby="btn-asignaciones">
+<div id="tab-asignaciones" class="tab-panel ciclo1" role="tabpanel" aria-labelledby="btn-asignaciones">
 <ul class="doc-list">
 <li><a class="doc-link" href="./docs/importantes/control/dt_ptl_controlAsignaciones_definitivo fase postmortem.xlsx">Control de asignaciones</a></li>
 </ul>
 </div>
 
 
-<div id="tab-defectos" class="tab-panel" role="tabpanel" aria-labelledby="btn-defectos">
+<div id="tab-defectos" class="tab-panel ciclo1" role="tabpanel" aria-labelledby="btn-defectos">
 <ul class="doc-list">
 <li><a class="doc-link" href="./docs/importantes/log defectos/logDefectos fase 1.pdf">Log de defectos fase iniciación</a></li>
 <li><a class="doc-link" href="./docs/importantes/log defectos/logDefectos fase 2.pdf">Log de defectos fase estrategia</a></li>
@@ -593,7 +606,7 @@
 </ul>
 </div>
 
-<div id="tab-requerimientos" class="tab-panel" role="tabpanel" aria-labelledby="btn-requerimientos">
+<div id="tab-requerimientos" class="tab-panel ciclo1" role="tabpanel" aria-labelledby="btn-requerimientos">
   <!-- Acordeones -->
 <details class="acc">
   <summary>Casos de uso</summary>
@@ -647,7 +660,7 @@
     <li><a class="doc-link" href="./docs/requerimientos/modelo/modelo de casos de uso .pdf">Modelo de casos de uso</a></li>
   </ul>
 </div>
-<div id="tab-diseno" class="tab-panel" role="tabpanel" aria-labelledby="btn-diseno">
+<div id="tab-diseno" class="tab-panel ciclo1" role="tabpanel" aria-labelledby="btn-diseno">
   <!-- Acordeones -->
   <details class="acc">
     <summary>Vistas UML</summary>
@@ -688,7 +701,7 @@
 </div>
 
 
-<div id="tab-informe" class="tab-panel" role="tabpanel" aria-labelledby="btn-informe">
+<div id="tab-informe" class="tab-panel ciclo1" role="tabpanel" aria-labelledby="btn-informe">
 <ul class="doc-list">
 <li><a class="doc-link" href="./docs/importantes/informes/Informe Final fase 1.pdf">Informe final fase de iniciación</a></li>
 <li><a class="doc-link" href="./docs/importantes/informes/Informe Final fase 2.pdf">Informe final fase de estrategia</a></li>
@@ -703,7 +716,7 @@
 
 
 <!-- Nuevo panel: Implementación -->
-<div id="tab-implementacion" class="tab-panel" role="tabpanel" aria-labelledby="btn-implementacion">
+<div id="tab-implementacion" class="tab-panel ciclo1" role="tabpanel" aria-labelledby="btn-implementacion">
   <!-- Directos -->
   <ul class="doc-list">
     <!-- Reemplaza las rutas/nombres por tus 3 documentos -->
@@ -714,7 +727,7 @@
   </ul>
 </div>
 
-<div id="tab-postmortem" class="tab-panel" role="tabpanel" aria-labelledby="btn-postmortem">
+<div id="tab-postmortem" class="tab-panel ciclo1" role="tabpanel" aria-labelledby="btn-postmortem">
   <ul class="doc-list">
     <li><a class="doc-link" href="./docs/postmortem/Presentación postmortem.pdf">Presentacion postmortem</a></li>
     <li><a class="doc-link" href="./docs/postmortem/Informe postmortem.pdf">Informe Postmortem</a></li>
@@ -724,7 +737,7 @@
 </div>
 
 
-<div id="tab-formatos" class="tab-panel" role="tabpanel" aria-labelledby="btn-formatos">
+<div id="tab-formatos" class="tab-panel ciclo1" role="tabpanel" aria-labelledby="btn-formatos">
   <ul class="doc-list">
     <!-- Plantillas/formatos usados (pueden ser .docx/.xlsx/.pdf) -->
     <li><a href="./docs/formatos/Acta de reunion.xlsx" target="_blank" rel="noopener">Formato: Acta de reunión</a></li>
@@ -748,6 +761,208 @@
   </ul>
 </div> 
 <!-- fin paneles -->
+<!-- Paneles Ciclo 2 (inicialmente sin abrir) dentro del modal -->
+<div id="tab-c2-bitacoras" class="tab-panel ciclo2" role="tabpanel" aria-labelledby="btn-c2-bitacoras">
+  <!-- Un acordeón por persona. Dentro puedes agregar N archivos.  -->
+  <details class="acc">
+    <summary>Bitácoras — Leidy Giraldo</summary>
+    <div class="inner">
+      <ul class="doc-list">
+         <li><a class="doc-link" href="./docs/ciclo 2/bitacoras/Leidy/BitacoraTiempo fase 1 y 2.pdf">Semana 01 fase iniciación y estrategia</a></li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary>Bitácoras — Santiago Herrada</summary>
+    <div class="inner">
+      <ul class="doc-list">
+        <li><a class="doc-link" href="./docs/ciclo 2/bitacoras/Santiago/BitacoraTiempodef_Santiago_Herrada_Octubre fase 1 y 2.pdf">Semana 01 fase iniciación y estrategia</a></li>
+        <li><a class="doc-link" href="./docs/ciclo 2/bitacoras/Santiago/BitacoraTiempodef_Santiago_Herrada fase 3 y 4.pdf">Semana 02 fase requerimientos y planeacion</a></li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary>Bitácoras — Esteban Prieto</summary>
+    <div class="inner">
+      <ul class="doc-list">
+        <li><a class="doc-link" href="./docs/ciclo 2/bitacoras/Esteban/BitacoraTiempo fase 1 y 2.pdf">Semana 01 fase iniciación y estrategia</a></li>
+        <li><a class="doc-link" href="./docs/ciclo 2/bitacoras/Esteban/BitacoraTiempo fase 3 y 4.pdf">Semana 02 fase requerimientos y planeacion</a></li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary>Bitácoras — Nicolás Cubillos</summary>
+    <div class="inner">
+      <ul class="doc-list">
+        <li><a class="doc-link" href="./docs/ciclo 2/bitacoras/Nicolas/BitacoraTiempo[9], Nicolas Cubillos fase 1 y 2.pdf">Semana 01 fase iniciación y estrategia</a></li>
+        <li><a class="doc-link" href="./docs/ciclo 2/bitacoras/Nicolas/BitacoraTiempo[10], Nicolas Cubillos fase 3 y 4.pdf">Semana 02 fase requerimientos y planeacion</a></li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary>Bitácoras — Kerlon Gutiérrez</summary>
+    <div class="inner">
+      <ul class="doc-list">
+        <li><a class="doc-link" href="./docs/ciclo 2/bitacoras/Kerlon/BitacoraTiempoKerlon fase 1 y 2.pdf">Semana 01 fase iniciación y estrategia</a></li>
+        <li><a class="doc-link" href="./docs/ciclo 2/bitacoras/Kerlon/BitacoraTiempoKerlon fase 3 y 4.pdf">Semana 02 fase requerimientos y planeacion</a></li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary>Bitácoras — Matías Marín</summary>
+    <div class="inner">
+      <ul class="doc-list">
+        <li><a class="doc-link" href="./docs/ciclo 2/bitacoras/Matias/BitacoraMatias fase 1 y 2.pdf">Semana 01 fase iniciación y estrategia</a></li>
+        <li><a class="doc-link" href="./docs/ciclo 2/bitacoras/Matias/BitacoraMatias fase 3 y 4.pdf">Semana 02 fase requerimientos y planeacion</a></li>
+      </ul>
+    </div>
+  </details>
+</div>
+
+<div id="tab-c2-script" class="tab-panel ciclo2" role="tabpanel" aria-labelledby="btn-c2-script">
+  <ul class="doc-list">
+    <li><a class="doc-link" href="./docs/ciclo 2/script/Script definición de procesos fase 1 y 2.pdf">Script 1 y 2</a></li>
+    <li><a class="doc-link" href="./docs/ciclo 2/script/Script definición de procesos fase 3 y 4.pdf">Script 3 y 4</a></li>
+
+
+  </ul>
+</div>
+
+<div id="tab-c2-defectos" class="tab-panel ciclo2" role="tabpanel" aria-labelledby="btn-c2-defectos">
+  <ul class="doc-list">
+    <li><a class="doc-link" href="./docs/ciclo 2/logdefectos/logDefectos fase 1 y 2.pdf">Log de defectos 1 y 2</a></li>
+  </ul>
+</div>
+
+<div id="tab-c2-importantes" class="tab-panel ciclo2" role="tabpanel" aria-labelledby="btn-c2-importantes">
+  <ul class="doc-list">
+    <li><a class="doc-link" href="./docs/ciclo 2/Acta de reunion ciclo 2.xlsx">ACTA DE REUNION CICLO 2</a></li>
+    <li><a class="doc-link" href="./docs/ciclo 2/dt_ptl_controlAsignaciones_definitivo ciclo 2 fase 3 y 4.xlsx">CONTROL DE ASIGNACIONES</a></li>
+    <li><a class="doc-link" href="./docs/ciclo 2/">Documento importante 3</a></li>
+  </ul>
+</div>
+
+<div id="tab-c2-inicio-estrategia" class="tab-panel ciclo2" role="tabpanel" aria-labelledby="btn-c2-inicio-estrategia">
+
+  <details class="acc">
+    <summary>ESTIMACIONES</summary>
+    <div class="inner">
+      <ul class="doc-list">
+        <li><a class="doc-link" href="./docs/ciclo 2/iniciacion y estrategia/1 estimacion.xlsx">Estimación de tamaño basada en LOC, Estimación de esfuerzo (Personas mes) con modelo empírico CoCoMo.</a></li>
+        <li><a class="doc-link" href="./docs/ciclo 2/iniciacion y estrategia/2 estimacion.xlsx">Estimación de tamaño basada en LOC y estimación de esfuerzo (Personas mes) con datos históricos.</a></li>
+        <li><a class="doc-link" href="./docs/ciclo 2/iniciacion y estrategia/3 estimacion.xlsx">Estimación de tamaño basada en puntos de función y estimación de esfuerzo (Personas mes) con modelo empírico.</a></li>
+        <li><a class="doc-link" href="./docs/ciclo 2/iniciacion y estrategia/4 estimacion.xlsx">Estimación de tamaño basada en puntos de función y estimación de esfuerzo (Personas mes) con datos históricos.</a></li>
+        <li><a class="doc-link" href="./docs/ciclo 2/iniciacion y estrategia/5 estimacion.xlsx">Estimación de tamaño y esfuerzo basada en Puntos de caso de uso.</a></li>
+        
+      </ul>
+    </div>
+  </details>
+
+  <ul class="doc-list">
+    <li><a class="doc-link" href="./docs/ciclo 2/iniciacion y estrategia/Copia de DT_Ini_01_ActaIniciacion_.docx.pdf">ACTA DE INICIACION</a></li>
+    <li><a class="doc-link" href="./docs/ciclo 2/iniciacion y estrategia/dt_ptl_doc_pl_01_plan_riesgosDefinitivo.pdf">PLAN DE RIESGOS</a></li>
+    <li><a class="doc-link" href="./docs/ciclo 2/iniciacion y estrategia/dt_ptl_plan_adminconfiguracion_Print(Null) 2.pdf">PLAN DE ADMINISTRACIÓN DE CONFIGURACIÓN</a></li>
+  </ul>
+</div>
+
+<div id="tab-c2-informe" class="tab-panel ciclo2" role="tabpanel" aria-labelledby="btn-c2-informe">
+  <ul class="doc-list">
+    <!-- Reemplaza con tus informes finales de Ciclo 2 -->
+    <li><a class="doc-link" href="./docs/ciclo 2/informes/Informe Final fase 1.pdf">Informe final fase 1 y 2</a></li>
+    <li><a class="doc-link" href="./docs/ciclo 2/informes/Informe Final fase 1.pdf">Informe final fase 3 y 4</a></li>
+
+  </ul>
+  </div>
+
+
+  <div id="tab-c2-requerimientos-planeacion" class="tab-panel ciclo2" role="tabpanel" aria-labelledby="btn-c2-requerimientos-planeacion">
+    <!-- Acordeones -->
+  <details class="acc">
+    <summary>Casos de uso</summary>
+    <div class="inner">
+      <ul class="doc-list">
+  <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/casos de uso/DT_Ptl_DetalleCasoUsoUC-01.pdf">UC-01. Editar perfil de usuario</a></li>
+  <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/casos de uso/DT_Ptl_DetalleCasoUsoUC-02.pdf">UC-02. Cambiar imagen de perfil</a></li>
+  <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/casos de uso/DT_Ptl_DetalleCasoUso 03.pdf">UC-03. Configurar tema de color del sistema</a></li>
+  <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/casos de uso/DT_Ptl_DetalleCasoUso 4.pdf">UC-04. Configurar disposición de paneles en la vista principal</a></li>
+  <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/casos de uso/DT_Ptl_DetalleCasoUso 5.pdf">UC-05. Configurar formato de fechas y moneda</a></li>
+  <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/casos de uso/DT_Ptl_DetalleCasoUso 6.pdf">UC-06. Configurar notificaciones preferidas</a></li>
+  <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/casos de uso/DT_Ptl_DetalleCasoUso_7.pdf">UC-07. Ver notificaciones</a></li>
+  <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/casos de uso/DT_Ptl_DetalleCasoUsoUC-08.pdf">UC-08. Marcar notificación como leída</a></li>
+  <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/casos de uso/DT_Ptl_DetalleCasoUso09.pdf">UC-09. Eliminar notificación</a></li>
+  <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/casos de uso/DT_Ptl_DetalleCasoUso10.pdf">UC-10. Filtrar notificaciones</a></li>
+  <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/casos de uso/DT_Ptl_DetalleCasoUso 011.pdf">UC-11. Generar reporte general</a></li>
+  <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/casos de uso/DT_Ptl_DetalleCasoUso_12.pdf">UC-12. Exportar reporte en PDF</a></li>
+  <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/casos de uso/DT_Ptl_DetalleCasoUso 013.pdf">UC-13. Exportar reporte en Excel</a></li>
+  <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/casos de uso/DT_Ptl_DetalleCasoUso_14.pdf">UC-14. Aplicar filtros en reportes</a></li>
+  <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/casos de uso/DT_Ptl_DetalleCasoUso_4 15.pdf">UC-15. Configurar formato de reportes</a></li>
+  <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/casos de uso/DT_Ptl_DetalleCasoUso_4 16.pdf">UC-16. Añadir pie de página institucional a reportes</a></li>
+  <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/casos de uso/DT_Ptl_DetalleCasoUso_ 17.pdf">UC-17. Cambiar tamaño de letra en reportes</a></li>
+  <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/casos de uso/DT_Ptl_DetalleCasoUso18.pdf">UC-18. Personalizar fondo de pantalla del usuario</a></li>
+  
+      </ul>
+    </div>
+  </details>
+  
+  
+    <details class="acc">
+      <summary>Atributos de calidad</summary>
+      <div class="inner">
+        <ul class="doc-list">
+          <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/atributos de calidad/DT_Ptl_EscenarioCalidad seguridad.pdf">Escenarios — Seguridad</a></li>
+          <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/atributos de calidad/Escenariodecalidadciclo2 Desempeño.pdf">Escenarios — Desempeño</a></li>
+          <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/atributos de calidad/DT_Ptl_EscenarioCalidadEscalabilidad.pdf">Escenarios — Escalabilidad</a></li>
+          <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/atributos de calidad/DT_Ptl_EscenarioCalidadUsabilidad.pdf">Escenarios — Usabilidad</a></li>
+          <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/atributos de calidad/EscenarioCalidad Disponibilidad.pdf">Escenarios — Disponibilidad</a></li>
+          <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/atributos de calidad/DT_Ptl_EscenarioCalidad Extensibilidad.pdf">Escenarios — Extensibilidad</a></li>
+        </ul>
+      </div>
+    </details>
+  
+    <!-- Directos -->
+  
+    <ul class="doc-list">
+      <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/diagrama dominio 2.png">Modelo de dominio</a></li>
+    </ul>
+  
+    <ul class="doc-list">
+      <li><a class="doc-link" href="./docs//ciclo 2/requerimientos y estrategia/Modelo de casos de uso.png">Modelo de casos de uso</a></li>
+      <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/_plan de calidad ciclo 2.docx.pdf">Plan de calidad</a></li>
+      <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/EDT_Definitivo (4).xlsx">EDT</a></li>
+      <li><a class="doc-link" href="./docs/ciclo 2/requerimientos y estrategia/Plantilla_Plan_de_administracion_de_requerimientos_Completo.docx.pdf">Plan de administración de requerimientos</a></li>
+      <li><a class="doc-link" href="./docs/ciclo 2/Plan_Seguimiento_Riesgos_fase 3 y 4.pdf">Plan de seguimiento de riesgos</a></li>
+    </ul>
+
+
+
+  </div>
+
+<div id="tab-c2-formatos" class="tab-panel ciclo2" role="tabpanel" aria-labelledby="btn-c2-formatos">
+  <ul class="doc-list">
+    <!-- Plantillas/formatos de Ciclo 2. Usamos enlaces normales (sin doc-link) para abrir en nueva pestaña -->
+    <li><a href="./docs/formatos/Acta de reunion.xlsx" target="_blank" rel="noopener">Formato: Acta de reunión</a></li>
+    <li><a href="./docs/formatos/BitacoraTiempo.docx" target="_blank" rel="noopener">Formato: Bitácora de tiempo</a></li>
+    <li><a href="./docs/formatos/DT_Ini_01_ActaIniciacion_.docx" target="_blank" rel="noopener">Formato: Acta de iniciación</a></li>
+    <li><a href="./docs/formatos/dt_ptl_controlAsignaciones(SEMANA 1).csv" target="_blank" rel="noopener">Formato: Control de asignaciones</a></li>
+    <li><a href="./docs/formatos/logDefectos.docx" target="_blank" rel="noopener">Formato: Log de defectos</a></li>
+    <li><a href="./docs/formatos/Maestro de documentos.xlsx" target="_blank" rel="noopener">Formato: Maestro de documentos</a></li>
+    <li><a href="./docs/formatos/Script definición de procesos.docx" target="_blank" rel="noopener">Formato: Script definición de procesos</a></li>
+    <li><a href="./docs/formatos/DefinicionEstrategia.docx" target="_blank" rel="noopener">Formato: Definición de estrategia</a></li>
+    <li><a href="./docs/formatos/PlanRiesgo.docx" target="_blank" rel="noopener">Formato: Plan de riesgo</a></li>
+    <li><a href="./docs/formatos/PlanAdministracionConfiguracion.docx" target="_blank" rel="noopener">Formato: Plan de administración de configuración</a></li>
+    <li><a href="./docs/formatos/DT_Ptl_DetalleCasoUso.docx" target="_blank" rel="noopener">Formato: Especificacion de casos de uso</a></li>
+    <li><a href="./docs/formatos/DT_Ptl_EscenarioCalidad.docx" target="_blank" rel="noopener">Formato: Especificacion de Atributos de calidad</a></li>
+     <li><a href="./docs/formatos/Plan_Seguimiento_Riesgos_DashKPI_Empty_.docx" target="_blank" rel="noopener">Formato: Seguimiento de plan de riesgos</a></li>
+     <li><a href="./docs/formatos/plan de calidad.docx" target="_blank" rel="noopener">Formato: Plan de calidad</a></li>
+     <li><a href="./docs/formatos/Plantilla_Plan_de_administracion_de_requerimientos.pdf" target="_blank" rel="noopener">Formato: Plan de administración de requerimientos</a></li>
+     <li><a href="./docs/formatos/PlantillaEDT_def.xlsx" target="_blank" rel="noopener">Formato: EDT</a></li>
+  </ul>
+</div>
 </div> <!-- /.modal-content -->
 </div> <!-- /#projectModal -->
 
@@ -999,6 +1214,24 @@
     }
   }
   window.switchTab = switchTab;
+
+  // Switch between Ciclo 1 and Ciclo 2 views
+  function switchCycle(cycle){
+    const show1 = Number(cycle) === 1;
+    document.querySelectorAll('.ciclo1').forEach(el => { el.style.display = show1 ? '' : 'none'; });
+    document.querySelectorAll('.ciclo2').forEach(el => { el.style.display = show1 ? 'none' : ''; });
+  }
+  window.switchCycle = switchCycle;
+
+  // Open modal directly on a specific cycle
+  function openProjectModalCycle(cycle){
+    openProjectModal();
+    switchCycle(cycle);
+    const defaultTab = Number(cycle) === 1 ? 'bitacoras' : 'c2-bitacoras';
+    // Ensure the desired cycle's first tab is selected
+    switchTab(defaultTab);
+  }
+  window.openProjectModalCycle = openProjectModalCycle;
 
   // ---------- PREVIEWER LOCAL (PDF / DOCX / XLSX / CSV) ----------
   const $frame = () => document.getElementById('previewFrame');
